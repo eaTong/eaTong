@@ -1,9 +1,9 @@
 {
-"scripts": {
-   	  "dev": "next",
-  	  "build": "next build",
-  	  "start": "next start"
-	},
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
   "dependencies": {
     "mobx": "^3.3.1",
     "mobx-react": "^4.3.3",

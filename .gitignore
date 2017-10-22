@@ -4,16 +4,10 @@ dist
 
 # dependencies
 node_modules
-package-lock.json
+yarn.lock
+
+# webstorm config
+.idea
 
 # logs
 *.log
-
-# coverage
-.nyc_output
-coverage
-
-# test output
-test/**/out
-.DS_Store
-
