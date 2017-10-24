@@ -12,7 +12,6 @@ class Index extends React.Component {
     console.log(this.props);
     return (
       <div>
-        123123123
         {JSON.stringify(this.props.task.itemList)}
       </div>
     )

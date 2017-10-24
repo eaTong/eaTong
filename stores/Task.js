@@ -4,7 +4,7 @@
 import {observable, action, computed, toJS} from 'mobx';
 
 export default class Task {
-    @observable itemList = [
-        {name: '123123', id: 0, completed: false}
-    ]
+  @observable itemList = [
+    {name: '123123', id: 0, completed: false}
+  ]
 }

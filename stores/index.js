@@ -1,5 +1,5 @@
 import Task from './Task';
 
 export default {
-    task: new Task(),
+  task: new Task(),
 }

@@ -2,15 +2,16 @@ import React from 'react'
 import {Provider} from 'mobx-react'
 import stores from '../stores'
 
-export default Component =>class extends React.Component{
-  constructor(props){
+export default Component => class extends React.Component {
+  constructor(props) {
     super(props);
     this.stores = stores;
   }
-  render(){
+
+  render() {
     return (
       <Provider {...this.stores} >
-        <Component />
+        <Component/>
       </Provider>
     )
   }
