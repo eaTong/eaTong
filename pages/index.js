@@ -1,1 +1,22 @@
-export default () => <div>Hello blog ,Welcome to next.js!</div>
+import React from 'react'
+import Page from '../components/Page'
+import {inject} from 'mobx-react'
+
+@inject('task')
+class Index extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    console.log(this.props);
+    return (
+      <div>
+        123123123
+        {JSON.stringify(this.props.task.itemList)}
+      </div>
+    )
+  }
+}
+
+export default Page(Index);
