@@ -5,6 +5,7 @@
     "start": "NODE_ENV=production node server.js"
   },
   "dependencies": {
+    "axios": "^0.17.0",
     "babel-preset-latest": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "babel-register": "^6.26.0",

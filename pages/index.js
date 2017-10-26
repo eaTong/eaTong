@@ -1,11 +1,15 @@
 import React from 'react'
 import Page from '../components/Page'
-import {inject} from 'mobx-react'
+import {inject , observer} from 'mobx-react'
 
-@inject('task')
+@inject('task') @observer
 class Index extends React.Component {
   constructor(props) {
     super(props);
+  }
+
+  componentWillMount() {
+    this.props.task.getTaskList();
   }
 
   render() {

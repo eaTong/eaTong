@@ -8,6 +8,7 @@ export async function getTask(ctx, next) {
     ];
   }
   ctx.body = global.tasks;
+  return global.tasks;
 }
 
 export async function addTask(ctx, next) {
