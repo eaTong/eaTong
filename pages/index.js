@@ -1,6 +1,7 @@
 import React from 'react'
 import Page from '../components/Page'
-import {inject , observer} from 'mobx-react'
+import {inject, observer} from 'mobx-react'
+import stylesheet from 'styles/global.less'
 
 @inject('task') @observer
 class Index extends React.Component {
@@ -16,6 +17,7 @@ class Index extends React.Component {
     console.log(this.props);
     return (
       <div>
+        <style dangerouslySetInnerHTML={{__html: stylesheet}}/>
         {JSON.stringify(this.props.task.itemList)}
       </div>
     )
