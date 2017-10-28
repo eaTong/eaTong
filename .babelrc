@@ -13,7 +13,9 @@
           "."
         ],
         "alias": {
-          "styles": "./styles"
+          "styles": "./styles",
+          "util": "./util",
+          "components": "./components"
         },
         "cwd": "babelrc"
       }

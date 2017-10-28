@@ -1,6 +1,8 @@
 import React from 'react'
 import {Provider} from 'mobx-react'
-import stores from '../stores'
+import stores from '../stores';
+import Loading from './Loading';
+import stylesheet from 'styles/global.sass'
 
 export default Component => class extends React.Component {
   constructor(props) {
@@ -11,7 +13,11 @@ export default Component => class extends React.Component {
   render() {
     return (
       <Provider {...this.stores} >
-        <Component/>
+        <div>
+          <Loading/>
+          <style dangerouslySetInnerHTML={{__html: stylesheet}}/>
+          <Component/>
+        </div>
       </Provider>
     )
   }
