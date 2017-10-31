@@ -13,7 +13,7 @@ export default Component => class extends React.Component {
   render() {
     return (
       <Provider {...this.stores} >
-        <div>
+        <div className="layout-default">
           <Loading/>
           <style dangerouslySetInnerHTML={{__html: stylesheet}}/>
           <Component/>

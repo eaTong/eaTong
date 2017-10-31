@@ -1,7 +1,7 @@
-import Task from './Task';
+import Todo from './Todo';
 import App from './App'
 
 export default {
-  task: new Task(),
+  todo: new Todo(),
   app: new App(),
 }

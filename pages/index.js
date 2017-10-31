@@ -1,23 +1,25 @@
 import React from 'react'
-import Page from 'components/Page'
-import {inject, observer} from 'mobx-react'
+import Page from '~components/Page'
+import Link from 'next/link';
 
-@inject('task') @observer
 class Index extends React.Component {
   constructor(props) {
     super(props);
   }
 
   componentWillMount() {
-    this.props.task.getTaskList();
   }
 
   render() {
     console.log(this.props);
     return (
-      <div>
-        <input type="text" className="input is-primary"/>
-        {JSON.stringify(this.props.task.itemList)}
+      <div className="hero is-medium">
+        <div className="hero-body">
+          <div className="container">
+            <h1 className="title">eaTong write a blog with Next.js</h1>
+            <Link href="/todo">to todo page</Link>
+          </div>
+        </div>
       </div>
     )
   }

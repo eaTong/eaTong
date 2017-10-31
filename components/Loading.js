@@ -12,9 +12,7 @@ class Loading extends Component {
 
   render() {
     return (
-      <div className="">
-        {this.props.app.loadingCount}
-      </div>
+      <div className={`global-loader ${this.props.app.loadingCount === 0 ? 'is-hidden' : ''}`}/>
     );
   }
 }

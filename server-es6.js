@@ -15,18 +15,14 @@ nextApp.prepare().then(() => {
   const app = new Koa();
 
   app.use(async (ctx, next) => {
-    try {
-      await next();
-      if (ctx.req.method === 'POST') {
-        ctx.body = {success: true, data: ctx.body, message: ''};
-      }
-      ctx.res.statusCode = 200;
-    } catch (ex) {
-      ctx.body = {success: false, data: ctx.body, message: ex};
-      ctx.res.statusCode = 200;
+    const result = await next();
+    if (ctx.req.method === 'POST') {
+      ctx.body = {success: true, data: result, message: ''};
     }
+    ctx.res.statusCode = 200;
   });
   app.use(koaBody());
+
   app.use(router.routes());
   router.get('*', async ctx => {
     await handle(ctx.req, ctx.res);
