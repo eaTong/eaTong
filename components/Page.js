@@ -10,32 +10,35 @@ export default Component => class extends React.Component {
     this.stores = stores;
   }
 
+  static async getInitialProps() {
+    if (Component.init) {
+      const result = await Component.init() || {};
+      for (let key in result) {
+        stores[key] = {...stores[key], ...result[key]}
+      }
+      this.stores = stores;
+      return {stores};
+    }
+    return {};
+  }
+
+  componentWillMount() {
+    const propStore = this.props.stores || {};
+    for (let key in propStore) {
+      stores[key] = {...stores[key], ...propStore[key]}
+    }
+    this.stores = stores;
+  }
+
   render() {
     return (
       <Provider {...this.stores} >
         <div className="layout-default">
           <Loading/>
           <style dangerouslySetInnerHTML={{__html: stylesheet}}/>
-          <Component/>
+          <Component initialData={this.props}/>
         </div>
       </Provider>
     )
   }
 }
-
-/*
-export default (props) => {
-  let pageStore = {};
-  if (props.inject && props.inject instanceof Array) {
-    for (let key of props.inject) {
-      pageStore[key] = store[key];
-    }
-  }
-  console.log(pageStore);
-  return (
-    <Provider store={store}>
-      {React.createElement('div', pageStore, props.children)}
-    </Provider>
-  )
-}
-*/

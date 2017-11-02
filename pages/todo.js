@@ -5,16 +5,15 @@ import React, {Component} from 'react';
 import {Page} from '~components';
 import Link from 'next/link';
 import {inject, observer} from 'mobx-react'
+import ajax from '~util/ajaxUtil';
+
 
 @inject('todo') @observer
 class Todo extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
 
-  componentDidMount() {
-    this.props.todo.getTodoList();
+  static async init() {
+    const item = await ajax('/api/todo/get');
+    return {todo: {itemList: item}};
   }
 
   addTodo() {

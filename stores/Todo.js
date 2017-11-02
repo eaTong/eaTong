@@ -8,12 +8,6 @@ export default class Todo {
   @observable itemList = [];
 
   @action
-  async getTodoList() {
-    const item = await ajax('/api/todo/get');
-    this.itemList = item || [];
-  }
-
-  @action
   async addTodo(name) {
     const todo = await ajax('/api/todo/add', {name});
     this.itemList = [...this.itemList, todo];
