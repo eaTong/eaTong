@@ -14,7 +14,11 @@ export default Component => class extends React.Component {
     if (Component.init) {
       const result = await Component.init() || {};
       for (let key in result) {
-        stores[key] = {...stores[key], ...result[key]}
+        for (let dataKey in result[key]) {
+          if (stores[key]) {
+            stores[key][dataKey] = result[key][dataKey];
+          }
+        }
       }
       this.stores = stores;
       return {stores};
@@ -25,7 +29,11 @@ export default Component => class extends React.Component {
   componentWillMount() {
     const propStore = this.props.stores || {};
     for (let key in propStore) {
-      stores[key] = {...stores[key], ...propStore[key]}
+      for (let dataKey in propStore[key]) {
+        if (stores[key]) {
+          stores[key][dataKey] = propStore[key][dataKey];
+        }
+      }
     }
     this.stores = stores;
   }
