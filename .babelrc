@@ -15,7 +15,8 @@
         "alias": {
           "styles": "./styles",
           "~util": "./util",
-          "~components": "./components"
+          "~components": "./components",
+          "~server": "./server"
         },
         "cwd": "babelrc"
       }

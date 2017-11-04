@@ -32,7 +32,7 @@ class Todo extends Component {
         <div className="section">
           <nav className="breadcrumb" aria-label="todo">
             <ul>
-              <li><Link href="/">index</Link></li>
+              <li><Link href="/"><a>index</a></Link></li>
               <li className="is-active"><a href="#" aria-current="page">Breadcrumb</a></li>
             </ul>
           </nav>
@@ -51,8 +51,8 @@ class Todo extends Component {
               </div>
             </div>
           </div>
-          {this.props.todo.itemList.map(todo => (
-            <a className="column" key={todo.id} onClick={this.toggleTodo.bind(this, todo.id)}>
+          {this.props.todo.itemList.map((todo, index) => (
+            <a className="column" key={todo._id} onClick={this.toggleTodo.bind(this, index)}>
               <div className="level">
                 <div className="level-left">
                   <div className="left-item">{todo.name}</div>

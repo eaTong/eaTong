@@ -17,7 +17,7 @@ class Index extends React.Component {
         <div className="hero-body">
           <div className="container">
             <h1 className="title">eaTong write a blog with Next.js</h1>
-            <Link href="/todo">to todo page</Link>
+            <Link href="/todo"><a>to todo page</a></Link>
           </div>
         </div>
       </div>

@@ -15,7 +15,7 @@ export default class Todo {
 
   @action
   async toggleTodo(index) {
-    const todo = await ajax('/api/todo/toggle', {index});
+    const todo = await ajax('/api/todo/toggle', {_id: this.itemList[index]._id});
     console.log(todo);
     this.itemList[index] = todo;
   }
