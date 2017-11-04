@@ -28,11 +28,15 @@ nextApp.prepare().then(() => {
   app.use(koaLogger());
   app.use(async (ctx, next) => {
     ctx.logger = logger;
-    const result = await next();
-    if (ctx.req.method === 'POST') {
-      ctx.body = {success: true, data: result, message: ''};
+    try {
+      ctx.res.statusCode = 200;
+      const result = await next();
+      if (ctx.req.method === 'POST') {
+        ctx.body = {success: true, data: result, message: ''};
+      }
+    } catch (ex) {
+      ctx.body = {success: false, data: {}, message: ex};
     }
-    ctx.res.statusCode = 200;
   });
   app.use(koaBody());
 

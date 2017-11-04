@@ -14,7 +14,6 @@ export async function addTodo(name) {
 
 export async function toggleTodo(_id) {
   const todo = await Todo.findById(_id);
-  // const result = await Todo.update({_id: _id}, {completed: !todo.completed});
   todo.completed = !todo.completed;
   await todo.save();
   return todo;

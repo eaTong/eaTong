@@ -6,7 +6,11 @@ import store from '../stores';
 
 export default async function ajax(url, data) {
   store.app.loading();
-  const result = await axios.post('http://localhost:3000' + url, data);
-  store.app.cancelLoading();
-  return result.data.data;
+  try {
+    const result = await axios.post('http://localhost:3000' + url, data);
+    store.app.cancelLoading();
+    return result.data.data;
+  } catch (ex) {
+    store.app.cancelLoading();
+  }
 };
