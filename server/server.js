@@ -29,6 +29,7 @@ nextApp.prepare().then(() => {
   //inject logger to ctx
   app.use(async (ctx, next) => {
     ctx.logger = logger;
+    await next();
   });
   //use koaBody to resolve data
   app.use(koaBody());
