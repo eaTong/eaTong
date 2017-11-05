@@ -26,26 +26,20 @@ nextApp.prepare().then(() => {
   const app = new Koa();
 
   app.use(koaLogger());
+  //inject logger to ctx
   app.use(async (ctx, next) => {
     ctx.logger = logger;
-    try {
-      ctx.res.statusCode = 200;
-      const result = await next();
-      if (ctx.req.method === 'POST') {
-        ctx.body = {success: true, data: result, message: ''};
-      }
-    } catch (ex) {
-      ctx.body = {success: false, data: {}, message: ex};
-    }
   });
+  //use koaBody to resolve data
   app.use(koaBody());
-
+//all routes just all API
   app.use(router.routes());
+
+  //next handle all router
   router.get('*', async ctx => {
     await handle(ctx.req, ctx.res);
     ctx.respond = false
   });
-
 
   app.listen(port, (err) => {
     if (err) throw err;
