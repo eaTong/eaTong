@@ -1126,6 +1126,10 @@ bluebird@^3.5.0:
   version "3.5.1"
   resolved "http://registry.npm.taobao.org/bluebird/download/bluebird-3.5.1.tgz#d9551f9de98f1fcda1e683d17ee91a0602ee2eb9"
 
+bluebird@~0.11.5-1:
+  version "0.11.6"
+  resolved "http://registry.npm.taobao.org/bluebird/download/bluebird-0.11.6.tgz#9a42fbfd5c25372f07e8acd31b0c646c603f2996"
+
 bn.js@^4.0.0, bn.js@^4.1.0, bn.js@^4.1.1, bn.js@^4.4.0:
   version "4.11.8"
   resolved "http://registry.npm.taobao.org/bn.js/download/bn.js-4.11.8.tgz#2cde09eb5ee341f484746bb0309b3253b1b1442f"
@@ -1225,6 +1229,10 @@ browserslist@^2.1.2, browserslist@^2.5.1:
   dependencies:
     caniuse-lite "^1.0.30000744"
     electron-to-chromium "^1.3.24"
+
+bson@~0.4.20:
+  version "0.4.23"
+  resolved "http://registry.npm.taobao.org/bson/download/bson-0.4.23.tgz#e65a2e3c7507ffade4109bc7575a76e50f8da915"
 
 bson@~1.0.4:
   version "1.0.4"
@@ -1758,6 +1766,16 @@ debug@2, debug@2.6.9, debug@^2.2.0, debug@^2.6.8, debug@^2.6.9:
   dependencies:
     ms "2.0.0"
 
+debug@~0.7.4:
+  version "0.7.4"
+  resolved "http://registry.npm.taobao.org/debug/download/debug-0.7.4.tgz#06e1ea8082c2cb14e39806e22e2f6f757f92af39"
+
+debug@~2.2.0:
+  version "2.2.0"
+  resolved "http://registry.npm.taobao.org/debug/download/debug-2.2.0.tgz#f87057e995b1a1f6ae6a4960664137bc56f039da"
+  dependencies:
+    ms "0.7.1"
+
 decamelize@^1.0.0, decamelize@^1.1.1, decamelize@^1.1.2:
   version "1.2.0"
   resolved "http://registry.npm.taobao.org/decamelize/download/decamelize-1.2.0.tgz#f6534d15148269b20352e7bee26f501f9a191290"
@@ -1975,6 +1993,10 @@ es6-map@^0.1.3:
     es6-set "~0.1.5"
     es6-symbol "~3.1.1"
     event-emitter "~0.3.5"
+
+es6-promise@2.1.1:
+  version "2.1.1"
+  resolved "http://registry.npm.taobao.org/es6-promise/download/es6-promise-2.1.1.tgz#03e8f3c7297928e5478d6ab1d0643251507bdedd"
 
 es6-promise@3.2.1:
   version "3.2.1"
@@ -3108,6 +3130,10 @@ koa-convert@^1.2.0:
     co "^4.6.0"
     koa-compose "^3.0.0"
 
+koa-cookie@^1.0.0:
+  version "1.0.0"
+  resolved "http://registry.npm.taobao.org/koa-cookie/download/koa-cookie-1.0.0.tgz#7c79723dd03b97abcfe430028b700bd47a36dafb"
+
 koa-is-json@^1.0.0:
   version "1.0.0"
   resolved "http://registry.npm.taobao.org/koa-is-json/download/koa-is-json-1.0.0.tgz#273c07edcdcb8df6a2c1ab7d59ee76491451ec14"
@@ -3130,6 +3156,21 @@ koa-router@^7.2.1:
     koa-compose "^3.0.0"
     methods "^1.0.1"
     path-to-regexp "^1.1.1"
+
+koa-session-mongo@^1.1.0:
+  version "1.1.0"
+  resolved "http://registry.npm.taobao.org/koa-session-mongo/download/koa-session-mongo-1.1.0.tgz#81c494accee2ad504d68b581ec3ec07e621ad250"
+  dependencies:
+    bluebird "~0.11.5-1"
+    debug "~0.7.4"
+    mongodb "~2.0.49"
+
+koa-session-store@^2.0.0:
+  version "2.0.0"
+  resolved "http://registry.npm.taobao.org/koa-session-store/download/koa-session-store-2.0.0.tgz#14d5431d7061cf13af1add0100f34a6c6ea19eeb"
+  dependencies:
+    debug "~2.2.0"
+    uid2 "0.0.3"
 
 koa@^2.3.0:
   version "2.3.0"
@@ -3559,6 +3600,12 @@ moment@^2.11.2:
   version "2.19.1"
   resolved "http://registry.npm.taobao.org/moment/download/moment-2.19.1.tgz#56da1a2d1cbf01d38b7e1afc31c10bcfa1929167"
 
+mongodb-core@1.2.31:
+  version "1.2.31"
+  resolved "http://registry.npm.taobao.org/mongodb-core/download/mongodb-core-1.2.31.tgz#f1e6405f03d40846fdb838a702507affa3cb2c39"
+  dependencies:
+    bson "~0.4.20"
+
 mongodb-core@2.1.17:
   version "2.1.17"
   resolved "http://registry.npm.taobao.org/mongodb-core/download/mongodb-core-2.1.17.tgz#a418b337a14a14990fb510b923dee6a813173df8"
@@ -3573,6 +3620,14 @@ mongodb@2.2.33:
     es6-promise "3.2.1"
     mongodb-core "2.1.17"
     readable-stream "2.2.7"
+
+mongodb@~2.0.49:
+  version "2.0.55"
+  resolved "http://registry.npm.taobao.org/mongodb/download/mongodb-2.0.55.tgz#a09dd77259f6bba69f7dd592a011c11aa5761097"
+  dependencies:
+    es6-promise "2.1.1"
+    mongodb-core "1.2.31"
+    readable-stream "1.0.31"
 
 mongoose@^4.13.0:
   version "4.13.0"
@@ -3608,6 +3663,10 @@ mquery@2.3.2:
     debug "^2.6.9"
     regexp-clone "^0.0.1"
     sliced "0.0.5"
+
+ms@0.7.1:
+  version "0.7.1"
+  resolved "http://registry.npm.taobao.org/ms/download/ms-0.7.1.tgz#9cd13c03adbff25b65effde7ce864ee952017098"
 
 ms@2.0.0:
   version "2.0.0"
@@ -4471,6 +4530,15 @@ read-pkg@^2.0.0:
     load-json-file "^2.0.0"
     normalize-package-data "^2.3.2"
     path-type "^2.0.0"
+
+readable-stream@1.0.31:
+  version "1.0.31"
+  resolved "http://registry.npm.taobao.org/readable-stream/download/readable-stream-1.0.31.tgz#8f2502e0bc9e3b0da1b94520aabb4e2603ecafae"
+  dependencies:
+    core-util-is "~1.0.0"
+    inherits "~2.0.1"
+    isarray "0.0.1"
+    string_decoder "~0.10.x"
 
 readable-stream@2.2.7:
   version "2.2.7"
@@ -5371,6 +5439,10 @@ uid-number@0.0.5:
 uid-number@^0.0.6:
   version "0.0.6"
   resolved "http://registry.npm.taobao.org/uid-number/download/uid-number-0.0.6.tgz#0ea10e8035e8eb5b8e4449f06da1c730663baa81"
+
+uid2@0.0.3:
+  version "0.0.3"
+  resolved "http://registry.npm.taobao.org/uid2/download/uid2-0.0.3.tgz#483126e11774df2f71b8b639dcd799c376162b82"
 
 underscore.string@~2.2.0rc:
   version "2.2.1"

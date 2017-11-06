@@ -11,8 +11,8 @@ import ajax from '~util/ajaxUtil';
 @inject('todo') @observer
 class Todo extends Component {
 
-  static async init() {
-    const item = await ajax('/api/todo/get');
+  static async init(req) {
+    const item = await ajax('/api/todo/get', {}, req);
     return {todo: {itemList: item}};
   }
 

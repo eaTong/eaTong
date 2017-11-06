@@ -4,10 +4,16 @@
 import axios from 'axios';
 import store from '../stores';
 
-export default async function ajax(url, data) {
+export default async function ajax(url, data, req) {
   store.app.loading();
   try {
-    const result = await axios.post('http://localhost:3000' + url, data);
+    let result;
+    if (req) {
+      const host = req.headers.host;
+      result = await axios.post('http://' + host + url, data, {headers: req.headers});
+    } else {
+      result = await axios.post(url, data);
+    }
     store.app.cancelLoading();
     return result.data.data;
   } catch (ex) {

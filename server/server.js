@@ -2,16 +2,20 @@ import next from 'next';
 import {useStaticRendering} from 'mobx-react';
 import Koa from 'koa';
 import koaBody from 'koa-body';
+import cookie from 'koa-cookie';
 import koaLogger from 'koa-logger';
+import session from 'koa-session-store';
+import mongoStore from 'koa-session-mongo';
+import {createLogger, format, transports} from 'winston';
 import router from './routers';
+import {connection} from './mongoConfig';
 
-const {createLogger, format, transports} = require('winston');
 
 const port = parseInt(process.env.PORT, 10) || 3000;
 const dev = process.env.NODE_ENV !== 'production';
 const nextApp = next({dev});
 const handle = nextApp.getRequestHandler();
-
+//define logger
 const logger = createLogger({
   level: 'info',
   transports: dev ? undefined : [
@@ -26,6 +30,15 @@ nextApp.prepare().then(() => {
   const app = new Koa();
 
   app.use(koaLogger());
+  app.use(cookie());
+//define mongo session storage...
+  app.use(session({
+    name: 'eaTong-session-id',
+    signed: true,
+    overwrite: true,
+    store: mongoStore.create({mongoose: connection})
+  }));
+  app.keys = ['key for eaTong'];
   //inject logger to ctx
   app.use(async (ctx, next) => {
     ctx.logger = logger;

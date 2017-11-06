@@ -11,5 +11,6 @@ export async function addTodo(ctx) {
 
 export async function toggleTodo(ctx) {
   const data = ctx.request.body;
+  console.log(ctx.session);
   return await todoServer.toggleTodo(data._id);
 }

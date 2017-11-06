@@ -10,9 +10,9 @@ export default Component => class extends React.Component {
     this.stores = stores;
   }
 
-  static async getInitialProps() {
+  static async getInitialProps({req}) {
     if (Component.init) {
-      const result = await Component.init() || {};
+      const result = await Component.init(req) || {};
       for (let key in result) {
         for (let dataKey in result[key]) {
           if (stores[key]) {
