@@ -3,10 +3,9 @@ import {useStaticRendering} from 'mobx-react';
 import Koa from 'koa';
 import koaBody from 'koa-body';
 import cookie from 'koa-cookie';
-import koaLogger from 'koa-logger';
 import session from 'koa-session-store';
 import mongoStore from 'koa-session-mongo';
-import {createLogger, format, transports} from 'winston';
+import {createLogger, transports} from 'winston';
 import router from './routers';
 import {connection} from './mongoConfig';
 
@@ -48,6 +47,15 @@ nextApp.prepare().then(() => {
   app.use(koaBody());
 //all routes just all API
   app.use(router.routes());
+
+  // /admin pages need to check login
+  router.get('/admin*', async (ctx, next) => {
+    if (!ctx.session.loginUser) {
+      ctx.redirect('/login');
+    } else {
+      await next();
+    }
+  });
 
   //next handle all router
   router.get('*', async ctx => {
