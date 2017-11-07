@@ -1,16 +1,24 @@
+import {checkArgument} from '../framework/apiDecorator';
 import todoServer from '../services/todoServer';
 
-export async function getTodo(ctx) {
-  return await todoServer.findAllTodo();
+
+class TodoApi {
+
+  static async getTodo(ctx) {
+    return await todoServer.findAllTodo();
+  }
+
+  static async addTodo(ctx) {
+    const data = ctx.request.body;
+    return await todoServer.addTodo(data.name);
+  }
+
+  static async toggleTodo(ctx) {
+    const data = ctx.request.body;
+    return await todoServer.toggleTodo(data._id);
+  }
 }
 
-export async function addTodo(ctx) {
-  const data = ctx.request.body;
-  return await todoServer.addTodo(data.name);
-}
+export default TodoApi;
 
-export async function toggleTodo(ctx) {
-  const data = ctx.request.body;
-  console.log(ctx.session);
-  return await todoServer.toggleTodo(data._id);
-}
+

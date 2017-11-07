@@ -1,26 +1,33 @@
 import Router from 'koa-router';
 
-import {getTodo, addTodo, toggleTodo} from './apis/todoApi';
+import TodoApi from './apis/todoApi';
+import {ArgMissError} from './framework/errors';
 
 const router = new Router();
-
+//define data structure for all API
 router.post('/api/*', async (ctx, next) => {
   try {
-    ctx.res.statusCode = 200;
-    const result = await next();
-    ctx.body = {success: true, data: result, message: ''};
+    const data = await next();
+    ctx.body = {success: true, data, message: ''};
   } catch (ex) {
-    ctx.body = {success: false, data: {}, message: ex};
+    if (ex instanceof ArgMissError) {
+      ctx.status = 400;
+      ctx.body = ex.message;
+    } else {
+      ctx.status = 200;
+      ctx.body = {success: false, data: {}, message: ex.message};
+
+    }
   }
 });
 
-router.post('/api/todo/get', getTodo);
-router.post('/api/todo/add', addTodo);
-router.post('/api/todo/toggle', toggleTodo);
+router.post('/api/todo/get', TodoApi.getTodo);
+router.post('/api/todo/add', TodoApi.addTodo);
+router.post('/api/todo/toggle', TodoApi.toggleTodo);
 
 
 router.post('/api/*', async ctx => {
-  ctx.statusCode = 404;
+  ctx.status = 404;
   ctx.body = 'api not found';
 });
 

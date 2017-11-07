@@ -1,5 +1,5 @@
 import React from 'react'
-import Page from '~components/Page'
+import Page from '../components/Page'
 import Link from 'next/link';
 
 class Index extends React.Component {
@@ -7,11 +7,7 @@ class Index extends React.Component {
     super(props);
   }
 
-  componentWillMount() {
-  }
-
   render() {
-    console.log(this.props);
     return (
       <div className="hero is-medium">
         <div className="hero-body">

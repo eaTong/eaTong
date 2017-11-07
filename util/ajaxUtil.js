@@ -4,7 +4,8 @@
 import axios from 'axios';
 import store from '../stores';
 
-export default async function ajax(url, data, req) {
+export default async function ajax(config) {
+  const {url, data, req} = config;
   store.app.loading();
   try {
     let result;
@@ -15,8 +16,9 @@ export default async function ajax(url, data, req) {
       result = await axios.post(url, data);
     }
     store.app.cancelLoading();
-    return result.data.data;
+    return result.data;
   } catch (ex) {
     store.app.cancelLoading();
+    return {message: ex.message, success: false, data: {}};
   }
 };

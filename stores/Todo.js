@@ -9,14 +9,13 @@ export default class Todo {
 
   @action
   async addTodo(name) {
-    const todo = await ajax('/api/todo/add', {name});
-    this.itemList = [...this.itemList, todo];
+    const {success, data} = await ajax({url: '/api/todo/add', data: {name}});
+    if(success)this.itemList = [...this.itemList, data];
   }
 
   @action
   async toggleTodo(index) {
-    const todo = await ajax('/api/todo/toggle', {_id: this.itemList[index]._id});
-    console.log(todo);
-    this.itemList[index] = todo;
+    const {success, data} = await ajax({url: '/api/todo/toggle', data: {_id: this.itemList[index]._id}});
+    if(success)this.itemList[index] = data;
   }
 }

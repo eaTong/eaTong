@@ -29,7 +29,7 @@ useStaticRendering(true);
 nextApp.prepare().then(() => {
   const app = new Koa();
 
-  app.use(koaLogger());
+  // app.use(koaLogger());
   app.use(cookie());
 //define mongo session storage...
   app.use(session({
