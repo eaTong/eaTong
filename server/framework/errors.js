@@ -8,3 +8,11 @@ export class ArgMissError {
     this.stack = new Error().stack;
   }
 }
+
+export class LogicError {
+  constructor(message) {
+    this.name = 'LoginError';
+    this.message = message;
+    this.stack = new Error().stack;
+  }
+}

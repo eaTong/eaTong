@@ -1,6 +1,6 @@
 import Router from 'koa-router';
-
 import TodoApi from './apis/todoApi';
+import UserApi from './apis/userApi';
 import {ArgMissError} from './framework/errors';
 
 const router = new Router();
@@ -25,6 +25,7 @@ router.post('/api/todo/get', TodoApi.getTodo);
 router.post('/api/todo/add', TodoApi.addTodo);
 router.post('/api/todo/toggle', TodoApi.toggleTodo);
 
+router.post('/api/user/login', UserApi.login);
 
 router.post('/api/*', async ctx => {
   ctx.status = 404;
