@@ -51,3 +51,26 @@ $turquoise: hsl(204, 86%, 53%)
     border-color: $primary transparent $primary transparent
     animation: lds-hourglass 2s linear infinite
     -webkit-animation: lds-hourglass 2s linear infinite
+
+.example-enter
+  transform: translateY(-100px)
+  opacity: 0.01
+
+
+.example-enter.example-enter-active
+  transform: translateY(0px)
+  opacity: 1
+  transition: all 500ms
+
+
+.example-exit
+  transform: translateY(0px)
+  opacity: 1
+
+
+.example-exit.example-exit-active
+  opacity: 0.01
+  transform: translateY(-100px)
+  transition: all 600ms
+
+

@@ -12,7 +12,7 @@ router.post('/api/*', async (ctx, next) => {
   } catch (ex) {
     if (ex instanceof ArgMissError) {
       ctx.status = 400;
-      ctx.body = ex.message;
+      ctx.body ={success: false, data: {}, message: ex.message};
     } else {
       ctx.status = 200;
       ctx.body = {success: false, data: {}, message: ex.message};
