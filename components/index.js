@@ -3,8 +3,10 @@
  */
 import Page from './Page';
 import Loading from './Loading';
+import RichEditor from './RichEditor';
 
 export {
   Page,
-  Loading
+  Loading,
+  RichEditor
 }

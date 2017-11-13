@@ -6,9 +6,9 @@ import store from '../stores';
 import {notify} from '../bulma-components';
 
 export default async function ajax(config) {
-  const {url, data, ctx} = config;
+  const {url, data, ctx, headers} = config;
   //if ctx.req is not null or undefined means this request is called from server-side,
-  if (ctx &&ctx.req) {
+  if (ctx && ctx.req) {
     try {
       const host = ctx.req.headers.host;
       const result = await axios.post('http://' + host + url, data, {headers: ctx.req.headers});

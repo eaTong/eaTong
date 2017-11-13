@@ -1,3 +1,6 @@
+import fs from 'fs';
+import os from 'os';
+import path from 'path';
 import next from 'next';
 import {useStaticRendering} from 'mobx-react';
 import Koa from 'koa';
@@ -43,8 +46,23 @@ nextApp.prepare().then(() => {
     ctx.logger = logger;
     await next();
   });
+
   //use koaBody to resolve data
-  app.use(koaBody());
+  app.use(koaBody({multipart: true}));
+
+
+  app.use(async function (ctx, next) {
+    // ignore non-POSTs
+    if ('POST' !== ctx.method) return await next();
+
+    const file = ctx.request.body.files.file;
+    const reader = fs.createReadStream(file.path);
+    const stream = fs.createWriteStream(path.join(os.tmpdir(), Math.random().toString()));
+    reader.pipe(stream);
+    console.log('uploading %s -> %s', file.name, stream.path);
+
+    ctx.redirect('/');
+  });
 //all routes just all API
   app.use(router.routes());
 

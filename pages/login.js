@@ -24,7 +24,7 @@ class Login extends Component {
           <div className="container">
             <form className="columns" onSubmit={this.onSubmit.bind(this)} name="login">
               <div className="column is-5">
-                <input type="text" className="input" name="user"/>
+                <input type="text" className="input" name="user" />
               </div>
               <div className="column is-5">
                 <input type="password" className="input" name="password"/>

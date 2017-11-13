@@ -1,6 +1,7 @@
 import Router from 'koa-router';
 import TodoApi from './apis/todoApi';
 import UserApi from './apis/userApi';
+import FileApi from './apis/fileApi';
 import {ArgMissError} from './framework/errors';
 
 const router = new Router();
@@ -12,7 +13,7 @@ router.post('/api/*', async (ctx, next) => {
   } catch (ex) {
     if (ex instanceof ArgMissError) {
       ctx.status = 400;
-      ctx.body ={success: false, data: {}, message: ex.message};
+      ctx.body = {success: false, data: {}, message: ex.message};
     } else {
       ctx.status = 200;
       ctx.body = {success: false, data: {}, message: ex.message};
@@ -26,6 +27,8 @@ router.post('/api/todo/add', TodoApi.addTodo);
 router.post('/api/todo/toggle', TodoApi.toggleTodo);
 
 router.post('/api/user/login', UserApi.login);
+
+router.post('/api/image/upload', FileApi.uploadImage);
 
 router.post('/api/*', async ctx => {
   ctx.status = 404;
