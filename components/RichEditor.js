@@ -19,17 +19,18 @@ export default class RichEditor extends Component {
   }
 
   async onUploadImage(file) {
-    console.log(123, file);
-    const formData = new FormData();
-    formData.append('file', file);
-    return await ajax({url: '/api/image/upload', data: formData, headers: {'Content-Type': 'multipart/form-data'}});
-    /*return new Promise(
-      (resolve, reject) => {
-        const result = ajax({api: '/api/image/upload', data: {file: file}});
-        console.log(result);
-
-      }
-    );*/
+    return new Promise((resolve, reject) => {
+      const formData = new FormData();
+      formData.append('file', file);
+      ajax({
+        url: '/api/image/upload',
+        data: formData,
+        headers: {'Content-Type': 'multipart/form-data'}
+      }).then(({success, data}) => {
+        console.log(success, data);
+        resolve({data: {link: `/static/upload/img/${data}`}});
+      });
+    });
   }
 
   render() {
