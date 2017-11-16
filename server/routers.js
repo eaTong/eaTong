@@ -32,7 +32,8 @@ router.post('/api/user/login', UserApi.login);
 router.post('/api/image/upload', FileApi.uploadImage);
 
 router.post('/api/blog/write', BlogApi.writeBlog);
-router.post('/api/blog/get', BlogApi.getBlog);
+router.post('/api/blog/list', BlogApi.getBlogList);
+router.post('/api/blog/detail', BlogApi.getBlogById);
 
 router.post('/api/*', async ctx => {
   ctx.status = 404;

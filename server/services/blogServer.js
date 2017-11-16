@@ -8,8 +8,12 @@ export async function writeBlog(data) {
   return await blog.save();
 }
 
-export async function getBlog() {
+export async function getBlogList() {
   return Blog.find().select('title publishTime')
 }
 
-export default {writeBlog, getBlog}
+export async function getBlogById(id) {
+  return Blog.findById(id);
+}
+
+export default {writeBlog, getBlogList, getBlogById}
