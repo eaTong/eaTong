@@ -3,6 +3,7 @@ import {Provider} from 'mobx-react'
 import stores from '../stores';
 import Loading from './Loading';
 import stylesheet from 'styles/global.sass'
+import '../util/prototypes';
 
 export default Component => class extends React.Component {
   constructor(props) {
