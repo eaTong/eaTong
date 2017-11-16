@@ -2,6 +2,7 @@ import Router from 'koa-router';
 import TodoApi from './apis/todoApi';
 import UserApi from './apis/userApi';
 import FileApi from './apis/fileApi';
+import BlogApi from './apis/blogApi';
 import {ArgMissError} from './framework/errors';
 
 const router = new Router();
@@ -29,6 +30,9 @@ router.post('/api/todo/toggle', TodoApi.toggleTodo);
 router.post('/api/user/login', UserApi.login);
 
 router.post('/api/image/upload', FileApi.uploadImage);
+
+router.post('/api/blog/write', BlogApi.writeBlog);
+router.post('/api/blog/get', BlogApi.getBlog);
 
 router.post('/api/*', async ctx => {
   ctx.status = 404;

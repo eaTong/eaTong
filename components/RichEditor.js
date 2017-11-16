@@ -2,13 +2,14 @@
  * Created by eatong on 17-11-10.
  */
 import React, {Component} from 'react'
+import {EditorState, convertToRaw, ContentState} from 'draft-js';
 import {Editor} from 'react-draft-wysiwyg';
-// import axios from 'axios';
+import draftToHtml from 'draftjs-to-html';
 import ajax from '../util/ajaxUtil';
 import stylesheet from 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
 
 export default class RichEditor extends Component {
-  state = {mounted: false};
+  state = {mounted: false, editorState: EditorState.createEmpty(),};
 
   constructor(props) {
     super(props);
@@ -17,6 +18,13 @@ export default class RichEditor extends Component {
   componentDidMount() {
     this.setState({mounted: true});
   }
+
+  onEditorStateChange(editorState) {
+    this.setState({
+      editorState,
+    });
+    this.props.onChange && this.props.onChange(draftToHtml(convertToRaw(editorState.getCurrentContent())));
+  };
 
   async onUploadImage(file) {
     return new Promise((resolve, reject) => {
@@ -27,7 +35,6 @@ export default class RichEditor extends Component {
         data: formData,
         headers: {'Content-Type': 'multipart/form-data'}
       }).then(({success, data}) => {
-        console.log(success, data);
         resolve({data: {link: `/static/upload/img/${data}`}});
       });
     });
@@ -50,7 +57,13 @@ export default class RichEditor extends Component {
     };
     return (
       <div>
-        {this.state.mounted && (<Editor toolbar={toolbar}/>)}
+        {this.state.mounted && (
+          <Editor toolbar={toolbar}
+                  editorState={this.state.editorState}
+                  wrapperClassName="demo-wrapper"
+                  editorClassName="demo-editor"
+                  onEditorStateChange={this.onEditorStateChange.bind(this)}
+          />)}
         <style dangerouslySetInnerHTML={{__html: stylesheet}}/>
       </div>
     )

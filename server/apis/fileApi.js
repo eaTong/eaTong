@@ -8,7 +8,6 @@ import {v4} from 'uuid';
 export default class FileApi {
 
   static async uploadImage(ctx) {
-    console.log(ctx.request.body.files.file);
     const file = ctx.request.body.files.file;
     const reader = fs.createReadStream(file.path);
     const fileName = v4() + file.name.slice(file.name.lastIndexOf('.'), file.name.length);
@@ -16,6 +15,5 @@ export default class FileApi {
     const stream = fs.createWriteStream(filePath);
     reader.pipe(stream);
     return fileName;
-    // console.log('uploading %s -> %s', file.name, stream.path);
   }
 }

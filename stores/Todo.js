@@ -2,7 +2,7 @@
  * Created by eatong on 17-10-24.
  */
 import {observable, action, computed, toJS} from 'mobx';
-import ajax from '~util/ajaxUtil';
+import ajax from '../util/ajaxUtil';
 
 export default class Todo {
   @observable itemList = [];

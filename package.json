@@ -8,6 +8,7 @@
     "axios": "^0.17.0",
     "bulma": "^0.6.0",
     "draft-js": "^0.10.4",
+    "draftjs-to-html": "^0.7.6",
     "get-form-data": "^1.2.5",
     "immutable": "^3.8.2",
     "koa": "^2.3.0",
