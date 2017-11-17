@@ -12,16 +12,22 @@ import ajax from '../../../util/ajaxUtil';
 class Blog extends Component {
 
   static async init(ctx) {
-    const {data} = await ajax({url: '/api/blog/get', ctx});
+    const {data} = await ajax({url: '/api/blog/list', ctx});
     return {blogAdmin: {blogList: data}};
   }
 
   render() {
     const {blogAdmin} = this.props;
     return (
-      <div className="hero">
-        <div className="hero-body">
-          <div className="container">
+      <div className="container">
+        <nav className="breadcrumb" aria-label="todo">
+          <ul className="column">
+            <li><Link href="/admin"><a>admin</a></Link></li>
+            <li className="is-active"><a aria-current="page">blog list</a></li>
+          </ul>
+        </nav>
+        <div className="hero">
+          <div className="hero-body">
             <div className="media">
               <div className="media-content"/>
               <div className="media-right">

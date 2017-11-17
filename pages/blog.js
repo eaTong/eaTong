@@ -12,20 +12,22 @@ import ajax from '../util/ajaxUtil';
 class Blog extends Component {
 
   static async init(ctx) {
-    if (ctx.req) {
-      console.log(ctx.query);
-      const {data} = await ajax({url: '/api/blog/detail', data: {id: ctx.query.id}, ctx});
-      return {blog: {blog: data}}
-    } else {
-      debugger;
-    }
+    const {data} = await ajax({url: '/api/blog/detail', data: {id: ctx.query.id}, ctx});
+    return {blog: {blog: data}}
   }
 
   render() {
-    const {} = this.props;
+    const {blog} = this.props;
     return (
       <div className="container">
-        {JSON.stringify(this.props.blog)}
+        <div className="hero">
+          <div className="hero-body">
+            <h1 className="title has-text-centered">{blog.blog.title}</h1>
+            <div className="content">
+              <div dangerouslySetInnerHTML={{__html: blog.blog.content || '<div></div>'}}/>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
