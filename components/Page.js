@@ -1,11 +1,11 @@
 import React from 'react'
-import {Provider} from 'mobx-react'
+import {Provider} from 'mobx-react';
 import stores from '../stores';
 import Loading from './Loading';
 import stylesheet from 'styles/global.sass'
 import '../util/prototypes';
 
-export default Component => class extends React.Component {
+export default Component => class Page extends React.Component {
   constructor(props) {
     super(props);
     this.stores = stores;
@@ -45,7 +45,7 @@ export default Component => class extends React.Component {
         <div className="layout-default">
           <Loading/>
           <style dangerouslySetInnerHTML={{__html: stylesheet}}/>
-          <Component initialData={this.props}/>
+          <Component />
         </div>
       </Provider>
     )

@@ -38,7 +38,9 @@ class Blog extends Component {
               <div className="media" key={blog._id}>
                 <div className="media-content">{blog.title}</div>
                 <div className="media-right">
-                  <button className="button  is-primary is-inverted">编辑</button>
+                  <Link href={`/admin/blog/write?id=${blog._id}`}>
+                    <button className="button  is-primary is-inverted">编辑</button>
+                  </Link>
                   <button className="button is-danger is-inverted">删除</button>
                 </div>
               </div>

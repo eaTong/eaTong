@@ -3,6 +3,7 @@
  */
 import {observable, action, computed, toJS} from 'mobx';
 import ajax from '../util/ajaxUtil';
+import {notify} from '../bulma-components';
 
 export default class BlogAdmin {
   @observable blogForm = {};
@@ -18,6 +19,17 @@ export default class BlogAdmin {
   @action
   async writeBlog() {
     const {success, data} = await ajax({url: '/api/blog/write', data: this.blogForm});
+    if (success) {
+      notify.success({content: '新增博客成功'})
+    }
+  }
+
+  @action
+  async updateBlog(id) {
+    const {success, data} = await ajax({url: '/api/blog/update', data: {...this.blogForm, id}});
+    if (success) {
+      notify.success({content: '编辑博客成功'})
+    }
   }
 
   @action

@@ -13,11 +13,20 @@ export default class BlogApi {
     return await blogServer.writeBlog(ctx.request.body);
   }
 
+  @checkArgument(['id','title','content'])
+  static async updateBlog(ctx) {
+    return await blogServer.updateBlog(ctx.request.body);
+  }
+
   static async getBlogList(ctx) {
     return await blogServer.getBlogList();
   }
 
   static async getBlogById(ctx) {
     return await blogServer.getBlogById(ctx.request.body.id);
+  }
+  @checkArgument('id')
+  static async deleteBlog(ctx){
+
   }
 }

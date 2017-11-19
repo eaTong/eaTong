@@ -5,6 +5,7 @@ import React, {Component} from 'react'
 import {EditorState, convertToRaw, ContentState} from 'draft-js';
 import {Editor} from 'react-draft-wysiwyg';
 import draftToHtml from 'draftjs-to-html';
+import htmlToDraft from 'html-to-draftjs';
 import ajax from '../util/ajaxUtil';
 import stylesheet from 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
 
@@ -17,6 +18,12 @@ export default class RichEditor extends Component {
 
   componentDidMount() {
     this.setState({mounted: true});
+    const contentBlock = htmlToDraft(this.props.value);
+    if (contentBlock) {
+      const contentState = ContentState.createFromBlockArray(contentBlock.contentBlocks);
+      const editorState = EditorState.createWithContent(contentState);
+      this.setState({editorState});
+    }
   }
 
   onEditorStateChange(editorState) {
