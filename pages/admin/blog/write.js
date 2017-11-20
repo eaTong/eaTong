@@ -14,7 +14,7 @@ class WriteBlog extends Component {
 
   static async init(ctx) {
     if (ctx.query.id) {
-      const {data} = await ajax({url: '/api/blog/detail', data: {id: ctx.query.id}, ctx});
+      const {data} = await ajax({url: '/api/blog/detail', data: {id: ctx.query.id, operate: 'edit'}, ctx});
       return {blogAdmin: {blogForm: data}}
     }
   }

@@ -23,8 +23,13 @@ export async function getBlogList() {
   return Blog.find().select('title publishTime')
 }
 
-export async function getBlogById(id) {
-  return Blog.findById(id);
+export async function getBlogById(id, operate) {
+  const blog = await Blog.findById(id);
+  if (operate !== 'edit') {
+    blog.viewCount = blog.viewCount ? blog.viewCount + 1 : 1;
+    await blog.save();
+  }
+  return blog;
 }
 
 export default {writeBlog, getBlogList, getBlogById, updateBlog}
