@@ -18,7 +18,7 @@ export default class RichEditor extends Component {
 
   componentDidMount() {
     this.setState({mounted: true});
-    const contentBlock = htmlToDraft(this.props.value);
+    const contentBlock = htmlToDraft(this.props.value || '<div></div>');
     if (contentBlock) {
       const contentState = ContentState.createFromBlockArray(contentBlock.contentBlocks);
       const editorState = EditorState.createWithContent(contentState);

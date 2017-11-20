@@ -4,6 +4,7 @@
 import React, {Component} from 'react';
 import {Page} from '~components';
 import Link from 'next/link';
+import Head from 'next/head'
 import {inject, observer} from 'mobx-react';
 import ajax from '../../../util/ajaxUtil';
 
@@ -20,6 +21,9 @@ class Blog extends Component {
     const {blogAdmin} = this.props;
     return (
       <div className="container">
+        <Head>
+          <title>blog list</title>
+        </Head>
         <nav className="breadcrumb" aria-label="todo">
           <ul className="column">
             <li><Link href="/admin"><a>admin</a></Link></li>

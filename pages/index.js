@@ -1,6 +1,7 @@
 import React from 'react'
 import Page from '../components/Page'
 import Link from 'next/link';
+import Head from 'next/head'
 import {inject, observer} from 'mobx-react';
 import ajax from '../util/ajaxUtil';
 
@@ -16,6 +17,9 @@ class Index extends React.Component {
     const {blog} = this.props;
     return (
       <div className="hero is-medium">
+        <Head>
+          <title>eaTong write blog with Next.js</title>
+        </Head>
         <div className="hero-body">
           <div className="container">
             <h1 className="title">eaTong write a blog with Next.js</h1>

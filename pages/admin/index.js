@@ -4,6 +4,7 @@
 import React, {Component} from 'react';
 import {inject, observer} from 'mobx-react'
 import Link from 'next/link';
+import Head from 'next/head'
 import {Page} from '../../components';
 
 
@@ -17,6 +18,9 @@ class Admin extends Component {
     const {} = this.props;
     return (
       <div className="container">
+        <Head>
+          <title>admin home page...</title>
+        </Head>
         admin page....
         <p>
           <Link href="/admin/blog"><a>blog list</a></Link>

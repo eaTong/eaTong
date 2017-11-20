@@ -4,6 +4,7 @@
 import React, {Component} from 'react';
 import {Page, RichEditor} from '../../../components/index';
 import Link from 'next/link';
+import Head from 'next/head'
 import {inject, observer} from 'mobx-react';
 import ajax from '../../../util/ajaxUtil';
 
@@ -31,6 +32,9 @@ class WriteBlog extends Component {
     const {blogAdmin, query} = this.props;
     return (
       <div className="container">
+        <Head>
+          <title>write blog</title>
+        </Head>
         <nav className="breadcrumb" aria-label="todo">
           <ul className="column">
             <li><Link href="/admin"><a>admin</a></Link></li>
