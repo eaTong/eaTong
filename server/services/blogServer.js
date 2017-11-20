@@ -10,10 +10,11 @@ export async function writeBlog(data) {
 
 export async function updateBlog(data) {
   const blog = await Blog.findById(data.id);
-  console.log(blog);
   blog.title = data.title;
   blog.content = data.content;
   blog.updateTime = new Date();
+  blog.history = blog.history ? blog.history : [];
+  blog.history.push({time: new Date(), commit: data.commit, content: data.content});
   await blog.save();
   return blog;
 }

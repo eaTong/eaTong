@@ -55,7 +55,7 @@ class WriteBlog extends Component {
             <h2 className="subtitle">编辑原因：</h2>
             <textarea
               className="textarea"
-              onChange={(event) => blogAdmin.updateForm('commmit', event.target.value)}/>
+              onChange={(event) => blogAdmin.updateForm('commit', event.target.value)}/>
           </div>
         )}
         <div className="media">
