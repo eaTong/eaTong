@@ -3,6 +3,8 @@ import next from 'next';
 import {useStaticRendering} from 'mobx-react';
 import Koa from 'koa';
 import koaBody from 'koa-body';
+import koaConnect from 'koa-connect';
+import compression from 'compression';
 import cookie from 'koa-cookie';
 import session from 'koa-session-store';
 import mongoStore from 'koa-session-mongo';
@@ -29,7 +31,8 @@ useStaticRendering(true);
 
 nextApp.prepare().then(() => {
   const app = new Koa();
-
+//use compression
+  app.use(koaConnect(compression()));
   // app.use(koaLogger());
   app.use(cookie());
 //define mongo session storage...
