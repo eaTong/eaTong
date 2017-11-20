@@ -2,6 +2,7 @@ import React from 'react'
 import {Provider} from 'mobx-react';
 import stores from '../stores';
 import Loading from './Loading';
+import {parse} from 'query-string';
 import stylesheet from 'styles/global.sass'
 import '../util/prototypes';
 
@@ -9,6 +10,7 @@ export default Component => class Page extends React.Component {
   constructor(props) {
     super(props);
     this.stores = stores;
+    this.state = {query: {}};
   }
 
   static async getInitialProps(ctx) {
@@ -39,13 +41,20 @@ export default Component => class Page extends React.Component {
     this.stores = stores;
   }
 
+  componentDidMount() {
+    const query = parse(window.location.search);
+    // this.state.query = query;
+    console.log('did mount.....');
+    this.setState({query});
+  }
+
   render() {
     return (
       <Provider {...this.stores} >
         <div className="layout-default">
           <Loading/>
           <style dangerouslySetInnerHTML={{__html: stylesheet}}/>
-          <Component />
+          <Component query={this.state.query || {}}/>
         </div>
       </Provider>
     )

@@ -4,7 +4,6 @@
 import React, {Component} from 'react';
 import {Page, RichEditor} from '../../../components/index';
 import Link from 'next/link';
-import {parse} from 'query-string';
 import {inject, observer} from 'mobx-react';
 import ajax from '../../../util/ajaxUtil';
 
@@ -20,7 +19,7 @@ class WriteBlog extends Component {
   }
 
   async onSaveBlog() {
-    const query = parse(window.location.search);
+    const query = this.props.query;
     if (query.id) {
       await this.props.blogAdmin.updateBlog(query.id);
     } else {
@@ -29,7 +28,7 @@ class WriteBlog extends Component {
   }
 
   render() {
-    const {blogAdmin} = this.props;
+    const {blogAdmin, query} = this.props;
     return (
       <div className="container">
         <nav className="breadcrumb" aria-label="todo">
@@ -51,6 +50,14 @@ class WriteBlog extends Component {
           <h2 className="subtitle">正文：</h2>
           <RichEditor onChange={(val) => blogAdmin.updateForm('content', val)} value={blogAdmin.blogForm.content}/>
         </div>
+        {query.id && (
+          <div className="column">
+            <h2 className="subtitle">编辑原因：</h2>
+            <textarea
+              className="textarea"
+              onChange={(event) => blogAdmin.updateForm('commmit', event.target.value)}/>
+          </div>
+        )}
         <div className="media">
           <div className="media-content"/>
           <div className="media-right">
