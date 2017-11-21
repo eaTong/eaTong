@@ -1,8 +1,8 @@
 {
   "scripts": {
-    "dev": "node server",
+    "dev": "node index",
     "build": "next build",
-    "start": "NODE_ENV=production node server"
+    "start": "NODE_ENV=production node index"
   },
   "dependencies": {
     "axios": "^0.17.0",
