@@ -24,14 +24,17 @@ class Index extends React.Component {
           <div className="container">
             <h1 className="title">eaTong write a blog with Next.js</h1>
             {blog.blogList.map((item, index) => (
-              <Link href={{pathname: '/blog', query: {id: item._id}}} key={item._id}>
-                <a className="media">
-                  <div className="media-content">{item.title}</div>
-                  <div className="media-right">
-                    {new Date(item.publishTime).format()}
-                  </div>
-                </a>
-              </Link>
+              <div className="media" key={item._id}>
+                <div className="media-content">
+                  <Link href={{pathname: '/blog', query: {id: item._id}}}>
+                    <a className="content">{item.title}</a>
+                  </Link>
+                  <p className="content has-text-grey">{item.info}</p>
+                </div>
+                <div className="media-right">
+                  {new Date(item.publishTime).format()}
+                </div>
+              </div>
             ))}
           </div>
         </div>

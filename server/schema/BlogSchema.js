@@ -6,6 +6,7 @@ import mongoose, {Schema} from '../mongoConfig';
 const BlogSchema = new Schema({
   title: String,
   content: String,
+  info: String,
   viewCount: Number,
   publishTime: Date,
   history: Array

@@ -40,7 +40,10 @@ class Blog extends Component {
             </div>
             {blogAdmin.blogList.map((blog, index) => (
               <div className="media" key={blog._id}>
-                <div className="media-content">{blog.title}</div>
+                <div className="media-content">
+                  <p>{blog.title}</p>
+                  <p className="content has-text-grey">{blog.info}</p>
+                </div>
                 <div className="media-right">
                   <Link href={`/admin/blog/write?id=${blog._id}`}>
                     <button className="button  is-primary is-inverted">编辑</button>
