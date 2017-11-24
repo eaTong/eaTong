@@ -13,20 +13,7 @@ module.exports = {
       }, {
         test: /\.css$/,
         use: ['babel-loader', 'raw-loader', 'postcss-loader']
-      }, {
-        test: /\.less$/,
-        use: ['babel-loader', 'raw-loader', 'postcss-loader',
-          {
-            loader: 'less-loader',
-            options: {
-              includePaths: ['styles', 'node_modules']
-                .map((d) => path.join(__dirname, d))
-                .map((g) => glob.sync(g))
-                .reduce((a, c) => a.concat(c), [])
-            }
-          }
-        ]
-      }, {
+      },{
         test: /\.less$/,
         use: ['babel-loader', 'raw-loader', 'postcss-loader',
           {
