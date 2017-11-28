@@ -7,7 +7,6 @@ import {Editor} from 'react-draft-wysiwyg';
 import draftToHtml from 'draftjs-to-html';
 import htmlToDraft from 'html-to-draftjs';
 import ajax from '../util/ajaxUtil';
-import stylesheet from 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
 
 export default class RichEditor extends Component {
   state = {mounted: false, editorState: EditorState.createEmpty(),};

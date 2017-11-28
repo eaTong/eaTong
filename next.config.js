@@ -50,7 +50,7 @@ module.exports = {
               options: {
                 sourceMap: false,
                 includePaths: [
-                  path.resolve(__dirname, 'scss'),
+                  path.resolve(__dirname, 'styles'),
                   path.resolve(__dirname, 'pages'),
                 ],
               },
@@ -67,7 +67,7 @@ module.exports = {
               options: {
                 sourceMap: true,
                 includePaths: [
-                  path.resolve(__dirname, 'scss'),
+                  path.resolve(__dirname, 'styles'),
                   path.resolve(__dirname, 'pages'),
                 ],
               },

@@ -33,6 +33,7 @@ class Index extends React.Component {
                 </div>
                 <div className="media-right">
                   {new Date(item.publishTime).format()}
+                  <p className="content has-text-grey">阅读量：{item.viewCount}</p>
                 </div>
               </div>
             ))}
