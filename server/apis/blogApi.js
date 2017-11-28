@@ -23,7 +23,14 @@ export default class BlogApi {
   }
 
   static async getBlogById(ctx) {
-    return await blogServer.getBlogById(ctx.request.body.id, ctx.request.body.operate);
+    const {body} = ctx.request;
+    const readBlog = ctx.session.readBlog || {};
+    const blogHasRead = readBlog[body.id];
+    if (!blogHasRead) {
+      readBlog[body.id] = true;
+      ctx.session.readBlog = readBlog;
+    }
+    return await blogServer.getBlogById(body.id, body.operate, blogHasRead);
   }
 
   @checkArgument('id')
