@@ -4,7 +4,6 @@ import stores from '../stores';
 import Loading from './Loading';
 import {parse} from 'query-string';
 import Head from 'next/head'
-import stylesheet from 'styles/global.sass'
 import '../util/prototypes';
 
 export default Component => class Page extends React.Component {
@@ -56,9 +55,8 @@ export default Component => class Page extends React.Component {
           <Loading/>
           <Head>
             <title>eaTong write a blog with Next.js</title>
-            <meta name="viewport" content="initial-scale=1.0, width=device-width" key="viewport" />
+            <meta name="viewport" content="initial-scale=1.0, width=device-width" key="viewport"/>
           </Head>
-          <style dangerouslySetInnerHTML={{__html: stylesheet}}/>
           <Component query={this.state.query || {}}/>
         </div>
       </Provider>
