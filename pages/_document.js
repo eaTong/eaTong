@@ -19,6 +19,10 @@ export default class MyDocument extends Document {
               type="text/css"
               href={`/app.css?${this.props.__NEXT_DATA__.buildStats['app.js'].hash}`}
             />
+            <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+            <meta name="description" content="周夷东个人站 personal website for eaTong"/>
+            <meta name="renderer" content="webkit|ie-stand|ie-comp"/>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
           </Head>
         ) : (
           <Head>
