@@ -70,7 +70,6 @@ export default class RichEditor extends Component {
                   editorClassName="demo-editor"
                   onEditorStateChange={this.onEditorStateChange.bind(this)}
           />)}
-        <style dangerouslySetInnerHTML={{__html: stylesheet}}/>
       </div>
     )
   }

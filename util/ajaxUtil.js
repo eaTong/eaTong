@@ -19,9 +19,13 @@ export default async function ajax(config) {
       return result.data;
 
     } catch (ex) {
-      ctx.res.statusCode = 500;
-      ctx.res.end(ex.message);
-      return {success: false, data: {}, message: ex.message}
+      const statusCode = ex.response.status;
+      ctx.res.statusCode = ex.response.status;
+      if (statusCode === 401) {
+        ctx.res.writeHead(302, {'Location': '/login'});
+        res.end();
+      }
+      ctx.res.end(ex.response.data.message);
     }
   } else {
     let result;
