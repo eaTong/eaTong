@@ -18,11 +18,11 @@ class Index extends React.Component {
     return (
       <div className="hero is-medium">
         <Head>
-          <title>eaTong write blog with Next.js</title>
+          <title>周夷东(eaTong)个人站</title>
         </Head>
         <div className="hero-body">
           <div className="container">
-            <h1 className="title">eaTong write a blog with Next.js</h1>
+            <h1 className="title">Personal Site written by eaTong with Next.js</h1>
             {blog.blogList.map((item, index) => (
               <div className="media" key={item._id}>
                 <div className="media-content">
@@ -39,6 +39,33 @@ class Index extends React.Component {
             ))}
           </div>
         </div>
+        <footer className="footer">
+          <div className="columns">
+            <div className="column is-one-quarter  is-offset-one-quarter">
+              <div>关于我</div>
+              <Link href='/about'>
+                <a>关于</a>
+              </Link>
+              <div>
+                <a href='http://www.yunzhizhuang.com'>当前工作</a>
+              </div>
+            </div>
+            <div className="column is-one-quarter">
+              <div>个人项目</div>
+              <div><a href="https://github.com/eaTong/electron-mobx-member">electron-mobx-member</a></div>
+              <div><a href="https://github.com/eaTong/electron-mobx">electron-mobx</a></div>
+              <div><a href="https://github.com/eaTong/document">document</a></div>
+              <div><a href="https://github.com/eaTong/next-mobx-starter">next-mobx-starter</a></div>
+            </div>
+          </div>
+          <div className="columns">
+            <div className="column has-text-centered">
+              <span>周夷东个人站</span>
+              <a href="http://www.miitbeian.gov.cn">滇ICP备 17010764</a>
+            </div>
+          </div>
+        </footer>
+
       </div>
     )
   }
