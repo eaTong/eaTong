@@ -19,6 +19,7 @@ export default class MyDocument extends Document {
               type="text/css"
               href={`/app.css?${this.props.__NEXT_DATA__.buildStats['app.js'].hash}`}
             />
+            <link rel="shortcut icon" href="/static/favicon.ico"/>
             <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
             <meta name="description" content="周夷东个人站 personal website for eaTong"/>
             <meta name="renderer" content="webkit|ie-stand|ie-comp"/>
@@ -26,7 +27,8 @@ export default class MyDocument extends Document {
           </Head>
         ) : (
           <Head>
-            <style global dangerouslySetInnerHTML={{__html: globalStyle}}/>
+            <link rel="shortcut icon" href="/static/favicon.ico"/>
+        <style global dangerouslySetInnerHTML={{__html: globalStyle}}/>
             <style global dangerouslySetInnerHTML={{__html: wysiwyg}}/>
           </Head>
         )}
