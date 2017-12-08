@@ -3,6 +3,7 @@
  */
 import {checkArgument} from '../framework/apiDecorator';
 import blogServer from '../services/blogServer';
+import visiteLogServer from "../services/visiteLogServer";
 
 
 export default class BlogApi {
@@ -25,10 +26,16 @@ export default class BlogApi {
   static async getBlogById(ctx) {
     const {body} = ctx.request;
     const readBlog = ctx.session.readBlog || {};
-    const blogHasRead = readBlog[body.id];
+    const blogHasRead = !!readBlog[body.id];
     if (!blogHasRead) {
       readBlog[body.id] = true;
       ctx.session.readBlog = readBlog;
+      const log = {
+        ip: ctx.request.ip,
+        userAgent: ctx.req.headers['user-agent'],
+        blogId: body.id
+      };
+      await visiteLogServer.addVisitLog(log);
     }
     return await blogServer.getBlogById(body.id, body.operate, blogHasRead);
   }
