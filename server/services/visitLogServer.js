@@ -14,7 +14,7 @@ export async function addVisitLog(data) {
 }
 
 export async function getVisitLogs(data) {
-  return await VisitLog.find();
+  return await VisitLog.find().populate('blog', 'title');
 }
 
 

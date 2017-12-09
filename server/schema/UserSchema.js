@@ -9,4 +9,4 @@ const UserSchema = new Schema({
   admin: Boolean,
 });
 
-export default mongoose.model('User', UserSchema);
+export default mongoose.model('user', UserSchema);

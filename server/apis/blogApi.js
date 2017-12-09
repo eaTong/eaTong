@@ -3,7 +3,7 @@
  */
 import {checkArgument} from '../framework/apiDecorator';
 import blogServer from '../services/blogServer';
-import visiteLogServer from "../services/visiteLogServer";
+import visiteLogServer from "../services/visitLogServer";
 
 
 export default class BlogApi {

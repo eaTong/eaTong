@@ -3,6 +3,7 @@ import App from './App';
 import User from './User';
 import BlogAdmin from './BlogAdmin';
 import Blog from './Blog';
+import VisitLog from './VisitLog';
 
 export default {
   todo: new Todo(),
@@ -10,4 +11,5 @@ export default {
   user: new User(),
   blogAdmin: new BlogAdmin(),
   blog: new Blog(),
+  visitLog: new VisitLog(),
 }

@@ -12,4 +12,4 @@ const BlogSchema = new Schema({
   history: Array
 });
 
-export default mongoose.model('Blog', BlogSchema);
+export default mongoose.model('blog', BlogSchema);

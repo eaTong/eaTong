@@ -28,6 +28,9 @@ class Admin extends Component {
         <p>
           <Link href="/admin/blog/write"><a>write a blog</a></Link>
         </p>
+        <p>
+          <Link href="/admin/analyse/visitLog"><a>visit log</a></Link>
+        </p>
       </div>
     );
   }
