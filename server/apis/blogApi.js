@@ -27,17 +27,19 @@ export default class BlogApi {
     const {body} = ctx.request;
     const readBlog = ctx.session.readBlog || {};
     const blogHasRead = !!readBlog[body.id];
+    const userAgent = ctx.req.headers['user-agent'];
     if (!blogHasRead) {
       readBlog[body.id] = true;
       ctx.session.readBlog = readBlog;
       const log = {
         ip: ctx.request.ip,
-        userAgent: ctx.req.headers['user-agent'],
+        userAgent: userAgent,
         blogId: body.id
       };
       await visiteLogServer.addVisitLog(log);
     }
-    return await blogServer.getBlogById(body.id, body.operate, blogHasRead);
+    const isSpider = /(Googlebot)|(Baiduspider)/.test(userAgent);
+    return await blogServer.getBlogById(body.id, body.operate !== 'edit' && !blogHasRead && !isSpider);
   }
 
   @checkArgument('id')
