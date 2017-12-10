@@ -34,7 +34,7 @@ class VisitLog extends Component {
               <td>{log.blog && log.blog.title}</td>
               <td>{log.ip}</td>
               <td>{log.userAgent}</td>
-              <td>{log.time}</td>
+              <td>{new Date(log.time).format('YYYY-MM-dd hh:mm:ss')}</td>
             </tr>
           ))}
           </tbody>
