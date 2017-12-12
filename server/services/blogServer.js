@@ -25,7 +25,7 @@ export async function updateBlog(data) {
 }
 
 export async function getBlogList() {
-  return Blog.find().select('title publishTime info viewCount').sort({publishTime: -1})
+  return Blog.find().select('title publishTime info viewCount isMarkdown').sort({publishTime: -1})
 }
 
 export async function getBlogById(id, operate, countShouldAdd) {

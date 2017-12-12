@@ -17,8 +17,8 @@ export default class BlogAdmin {
   }
 
   @action
-  async writeBlog() {
-    const {success, data} = await ajax({url: '/api/blog/write', data: this.blogForm});
+  async writeBlog(isMarkdown) {
+    const {success} = await ajax({url: '/api/blog/write', data: {...this.blogForm, isMarkdown: !!isMarkdown}});
     if (success) {
       notify.success({content: '新增博客成功'})
     }

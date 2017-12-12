@@ -9,7 +9,8 @@ const BlogSchema = new Schema({
   info: String,
   viewCount: Number,
   publishTime: Date,
-  history: Array
+  history: Array,
+  isMarkdown: Boolean
 });
 
 export default mongoose.model('blog', BlogSchema);

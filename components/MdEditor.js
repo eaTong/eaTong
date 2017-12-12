@@ -17,7 +17,8 @@ class MdEditor extends Component {
   }
 
   onChangeText(event) {
-    this.setState({value: event.target.value})
+    this.setState({value: event.target.value});
+    this.props.onChange && this.props.onChange(event.target.value);
   }
 
   render() {

@@ -45,7 +45,7 @@ class Blog extends Component {
                   <p className="content has-text-grey">{blog.info}</p>
                 </div>
                 <div className="media-right">
-                  <Link href={`/admin/blog/write?id=${blog._id}`}>
+                  <Link href={`/admin/blog/${blog.isMarkdown ? 'md-write' : 'write'}?id=${blog._id}`}>
                     <button className="button  is-primary is-inverted">编辑</button>
                   </Link>
                   <button className="button is-danger is-inverted">删除</button>
