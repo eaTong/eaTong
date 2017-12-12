@@ -4,9 +4,11 @@
 import Page from './Page';
 import Loading from './Loading';
 import RichEditor from './RichEditor';
+import MdEditor from './MdEditor';
 
 export {
   Page,
   Loading,
-  RichEditor
+  RichEditor,
+  MdEditor,
 }

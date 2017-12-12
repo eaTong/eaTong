@@ -5,6 +5,7 @@ import React from 'react';
 import Document, {Head, Main, NextScript} from 'next/document';
 import globalStyle from '../styles/global.sass'
 import wysiwyg from 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
+import mdStyle from '../styles/md-editor.scss';
 
 
 export default class MyDocument extends Document {
@@ -28,8 +29,9 @@ export default class MyDocument extends Document {
         ) : (
           <Head>
             <link rel="shortcut icon" href="/static/favicon.ico"/>
-        <style global dangerouslySetInnerHTML={{__html: globalStyle}}/>
+            <style global dangerouslySetInnerHTML={{__html: globalStyle}}/>
             <style global dangerouslySetInnerHTML={{__html: wysiwyg}}/>
+            <style global dangerouslySetInnerHTML={{__html: mdStyle}}/>
           </Head>
         )}
       <Head>
