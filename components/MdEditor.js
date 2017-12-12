@@ -13,7 +13,8 @@ class MdEditor extends Component {
     };
   }
 
-  componentDidMount() {
+  componentWillMount() {
+    this.state.value = this.props.value;
   }
 
   onChangeText(event) {
@@ -25,6 +26,7 @@ class MdEditor extends Component {
     return (
       <div className={`mde-container ${this.props.containerClass || ""}`}>
         <textarea onChange={this.onChangeText.bind(this)}
+                  value={this.state.value}
                   className={`mde-textarea ${this.props.editorClass || ""}`}/>
         <ReactMarkdown source={this.state.value} className={`mde-viewer ${this.props.viewerClass || ""}`}/>
       </div>
