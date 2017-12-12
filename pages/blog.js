@@ -10,7 +10,6 @@ import ajax from '../util/ajaxUtil';
 import ReactMarkdown from 'react-markdown';
 
 
-
 @inject('blog') @observer
 class Blog extends Component {
 
@@ -28,8 +27,8 @@ class Blog extends Component {
         </Head>
         <nav className="breadcrumb">
           <ul className="column">
-            <li><Link href="/"><a>home page</a></Link></li>
-            <li className="is-active"><a aria-current="page">blog detail</a></li>
+            <li><Link href="/"><a>首页</a></Link></li>
+            <li className="is-active"><a aria-current="page">{blog.blog.title}</a></li>
           </ul>
         </nav>
         <div className="hero">

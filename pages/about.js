@@ -2,7 +2,7 @@
  * Created by eatong on 17-11-23.
  */
 import React, {Component} from 'react';
-import {Page} from '~components';
+import {Page, Footer} from '~components';
 import Link from 'next/link';
 import Head from 'next/head'
 import {inject, observer} from 'mobx-react'
@@ -18,6 +18,20 @@ class AboutMe extends Component {
     const {} = this.props;
     return (
       <div className="hero">
+        <div className="hero-head">
+          <Head>
+            <title>关于</title>
+          </Head>
+          <div className="container">
+            <nav className="breadcrumb">
+              <ul className="column">
+                <li><Link href="/"><a>首页</a></Link></li>
+                <li className="is-active"><a aria-current="page">关于</a></li>
+              </ul>
+            </nav>
+
+          </div>
+        </div>
         <div className="hero-body">
           <div className="container">
             <div className="title">Who am I?</div>
@@ -82,6 +96,7 @@ class AboutMe extends Component {
             </div>
           </div>
         </div>
+        <Footer/>
       </div>
     );
   }
