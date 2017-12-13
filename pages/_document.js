@@ -25,6 +25,8 @@ export default class MyDocument extends Document {
             <meta name="description" content="周夷东个人站 personal website for eaTong"/>
             <meta name="renderer" content="webkit|ie-stand|ie-comp"/>
             <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+            <script src="//msite.baidu.com/sdk/c.js?appid=1586633791440102"></script>
+            <script>cambrian.render('head')</script>
           </Head>
         ) : (
           <Head>

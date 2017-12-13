@@ -1299,6 +1299,10 @@ builtins@^1.0.3:
   version "1.0.3"
   resolved "http://registry.npm.taobao.org/builtins/download/builtins-1.0.3.tgz#cb94faeb61c8696451db36534e1422f94f0aee88"
 
+bulma-extensions@^0.5.2:
+  version "0.5.2"
+  resolved "http://registry.npm.taobao.org/bulma-extensions/download/bulma-extensions-0.5.2.tgz#254c8026871f88fc38da4099bf6e7838c6387a4c"
+
 bulma@^0.6.0:
   version "0.6.1"
   resolved "http://registry.npm.taobao.org/bulma/download/bulma-0.6.1.tgz#5f21a77c0c06f7d80051c06628c23516081bd649"
