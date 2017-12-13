@@ -83,6 +83,12 @@ class Log extends Component {
                   <p>增加评论系统，收集文章评论。</p>
                 </div>
               </div>
+              <div className="timeline-item">
+                <div className="timeline-marker"/>
+                <div className="timeline-content">
+                  <p>优化代码块展示，目前的展示太low</p>
+                </div>
+              </div>
 
 
             </div>
