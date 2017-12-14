@@ -42,18 +42,17 @@ export function getBrowserInfo(agent) {
   else if ((verOffset = agent.indexOf("Firefox")) !== -1) {
     browserName = "Firefox";
     fullVersion = agent.substring(verOffset + 8);
-  }
-// In most other browsers, "name/version" is at the end of userAgent
-  else if ((nameOffset = agent.lastIndexOf(' ') + 1) <
-    (verOffset = agent.lastIndexOf('/'))) {
-    browserName = agent.substring(nameOffset, verOffset);
-    fullVersion = agent.substring(verOffset + 1);
   }else if(/Baiduspider/.test(agent)){
     browserName = 'Baiduspider';
     fullVersion = 0;
   }else if(/Googlebot/.test(agent)){
     browserName = 'Googlebot';
     fullVersion = 0;
+  }
+// In most other browsers, "name/version" is at the end of userAgent
+  else if ((nameOffset = agent.lastIndexOf(' ') + 1) < (verOffset = agent.lastIndexOf('/'))) {
+    browserName = agent.substring(nameOffset, verOffset);
+    fullVersion = agent.substring(verOffset + 1);
   }
 // trim the fullVersion string at semicolon/space if present
   if ((ix = fullVersion.indexOf(";")) !== -1)
