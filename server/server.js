@@ -74,7 +74,7 @@ nextApp.prepare().then(() => {
         browser: browserInfo.browser,
 
       };
-      visitLogServer.addVisitLog(log);
+      await visitLogServer.addVisitLog(log);
     }
   });
 

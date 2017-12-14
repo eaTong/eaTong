@@ -48,6 +48,12 @@ export function getBrowserInfo(agent) {
     (verOffset = agent.lastIndexOf('/'))) {
     browserName = agent.substring(nameOffset, verOffset);
     fullVersion = agent.substring(verOffset + 1);
+  }else if(/Baiduspider/.test(agent)){
+    browserName = 'Baiduspider';
+    fullVersion = 0;
+  }else if(/Googlebot/.test(agent)){
+    browserName = 'Googlebot';
+    fullVersion = 0;
   }
 // trim the fullVersion string at semicolon/space if present
   if ((ix = fullVersion.indexOf(";")) !== -1)
@@ -55,7 +61,7 @@ export function getBrowserInfo(agent) {
   if ((ix = fullVersion.indexOf(" ")) !== -1)
     fullVersion = fullVersion.substring(0, ix);
 
-  const majorVersion = parseInt('' + fullVersion, 10);
+  const majorVersion = parseInt('' + fullVersion, 10) || 0;
   return {browser: browserName, version: majorVersion};
 }
 
