@@ -31,7 +31,7 @@ export default async function ajax(config) {
     let result;
     store.app.loading();
     try {
-      result = await axios.post(url, {...data, pageUrl: window.location.href});
+      result = await axios.post(url, {...data, pageUrl: window.location.pathname + window.location.search});
       if (!result.data.success) {
         notify.error({content: result.data.message})
       }
