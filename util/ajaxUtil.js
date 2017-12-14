@@ -11,7 +11,7 @@ export default async function ajax(config) {
   if (ctx && ctx.req) {
     try {
       const host = ctx.req.headers.host;
-      const result = await axios.post('http://' + host + url, data, {headers: ctx.req.headers});
+      const result = await axios.post('http://' + host + url, {...data, __server: true}, {headers: ctx.req.headers});
       if (!result.data.success) {
         ctx.res.statusCode = 200;
         ctx.res.end(result.data.message);
@@ -31,7 +31,7 @@ export default async function ajax(config) {
     let result;
     store.app.loading();
     try {
-      result = await axios.post(url, data);
+      result = await axios.post(url, {...data, pageUrl: window.location.href});
       if (!result.data.success) {
         notify.error({content: result.data.message})
       }

@@ -5,10 +5,9 @@ import VisitLog from "../schema/VisitLogSchema";
  */
 export async function addVisitLog(data) {
   const log = new VisitLog({
+    ...data,
     blog: data.blogId,
-    time: new Date(),
-    userAgent: data.userAgent,
-    ip: data.ip
+    visitTime: new Date(),
   });
   return await log.save();
 }

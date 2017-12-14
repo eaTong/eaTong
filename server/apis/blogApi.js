@@ -3,7 +3,7 @@
  */
 import {checkArgument} from '../framework/apiDecorator';
 import blogServer from '../services/blogServer';
-import visiteLogServer from "../services/visitLogServer";
+import visitLogServer from "../services/visitLogServer";
 
 
 export default class BlogApi {
@@ -31,12 +31,6 @@ export default class BlogApi {
     if (!blogHasRead) {
       readBlog[body.id] = true;
       ctx.session.readBlog = readBlog;
-      const log = {
-        ip: ctx.request.ip,
-        userAgent: userAgent,
-        blogId: body.id
-      };
-      await visiteLogServer.addVisitLog(log);
     }
     const isSpider = /(Googlebot)|(Baiduspider)/.test(userAgent);
     return await blogServer.getBlogById(body.id, body.operate !== 'edit' && !blogHasRead && !isSpider);

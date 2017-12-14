@@ -6,6 +6,7 @@ import koaBody from 'koa-body';
 import koaConnect from 'koa-connect';
 import compression from 'compression';
 import cookie from 'koa-cookie';
+import koaLogger from 'koa-logger';
 import session from 'koa-session-store';
 import mongoStore from 'koa-session-mongo';
 import {createLogger, transports} from 'winston';
@@ -13,6 +14,8 @@ import router from './routers';
 import {connection} from './mongoConfig';
 import staticCache from 'koa-static-cache';
 import serve from 'koa-static';
+import visitLogServer from "./services/visitLogServer";
+import {getBrowserInfo} from "./framework/util";
 
 
 const port = parseInt(process.env.PORT, 10) || 8080;
@@ -34,7 +37,7 @@ nextApp.prepare().then(() => {
   const app = new Koa();
 //use compression
   app.use(koaConnect(compression()));
-  // app.use(koaLogger());
+  app.use(koaLogger());
   app.use(cookie());
   app.use(serve('.next/static'), {
     maxAge: 365 * 24 * 60 * 60,
@@ -54,7 +57,28 @@ nextApp.prepare().then(() => {
   //inject logger to ctx
   app.use(async (ctx, next) => {
     ctx.logger = logger;
+    const startTime = new Date().getTime();
     await next();
+    const {body} = ctx.request;
+    const url = body.pageUrl || ctx.originalUrl;
+    console.log(url, body);
+    if (url.indexOf('.') === -1 && !body.__server) {
+      const userAgent = ctx.req.headers['user-agent'];
+      const browserInfo = getBrowserInfo(userAgent);
+      const log = {
+        url,
+        ip: ctx.req.headers['x-forwarded-for'] || ctx.request.ip,
+        userAgent: userAgent,
+        blogId: /\/blog\?id/.test(url) ? url.replace('/blog?id=', '') : '',
+        usedTime: new Date().getTime() - startTime,
+        version: browserInfo.version,
+        browser: browserInfo.browser,
+
+      };
+      visitLogServer.addVisitLog(log);
+    }
+
+
   });
 
   //use koaBody to resolve data

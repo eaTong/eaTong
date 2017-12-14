@@ -7,8 +7,12 @@ import mongoose, {Schema} from '../mongoConfig';
 const VisitLogSchema = new Schema({
   ip: {type: String},
   userAgent: {type: String},
-  time: {type: Date},
-  blog: {type: String, ref: 'blog'}
+  browser: {type: String},
+  version: {type: Number},
+  blog: {type: String, ref: 'blog'},//关联博客（如果有）
+  url: {type: String},//路径
+  usedTime: {type: Number},//访问时间
+  visitTime: {type: Date},//耗时
 });
 
 export default mongoose.model('visitLog', VisitLogSchema);
