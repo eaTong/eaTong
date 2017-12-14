@@ -11,7 +11,7 @@ const VisitLogSchema = new Schema({
   version: {type: Number},
   blog: {type: String, ref: 'blog'},//关联博客（如果有）
   url: {type: String},//路径
-  usedTime: {type: Number},//访问时间
+  spentTime: {type: Number},//访问时间
   visitTime: {type: Date},//耗时
 });
 

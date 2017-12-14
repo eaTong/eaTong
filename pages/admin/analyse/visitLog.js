@@ -23,18 +23,22 @@ class VisitLog extends Component {
           <thead>
           <tr>
             <th>title</th>
+            <th>url</th>
             <th>ip</th>
-            <th>user-agent</th>
+            <th>browser</th>
             <th>time</th>
+            <th>spentTime</th>
           </tr>
           </thead>
           <tbody>
           {visitLog.logs.map(log => (
             <tr key={log._id}>
               <td>{log.blog && log.blog.title}</td>
+              <td>{log.url}</td>
               <td>{log.ip}</td>
-              <td>{log.userAgent}</td>
-              <td>{new Date(log.time).format('YYYY-MM-dd hh:mm:ss')}</td>
+              <td>{log.browser + '/' + log.version}</td>
+              <td>{new Date(log.visitTime).format('YYYY-MM-dd hh:mm:ss')}</td>
+              <td>{log.spentTime}</td>
             </tr>
           ))}
           </tbody>
