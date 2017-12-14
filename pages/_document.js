@@ -15,6 +15,7 @@ export default class MyDocument extends Document {
       {process.env.NODE_ENV === 'production'
         ? (
           <Head>
+            <meta name="google-site-verification" content="z4Kn_T2poQSwFQ-i5wVMX_SHKUtfO72wwALHTe-3R6s"/>
             <link
               rel="stylesheet"
               type="text/css"
