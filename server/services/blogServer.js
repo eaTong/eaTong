@@ -28,9 +28,9 @@ export async function getBlogList() {
   return Blog.find().select('title publishTime info viewCount isMarkdown').sort({publishTime: -1})
 }
 
-export async function getBlogById(id, operate, countShouldAdd) {
+export async function getBlogById(id, countShouldAdd) {
   const blog = await Blog.findById(id);
-  if (operate !== 'edit' && countShouldAdd) {
+  if (countShouldAdd) {
     blog.viewCount = blog.viewCount ? blog.viewCount + 1 : 1;
     await blog.save();
   }
