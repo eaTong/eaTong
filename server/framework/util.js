@@ -44,10 +44,10 @@ export function getBrowserInfo(agent) {
     fullVersion = agent.substring(verOffset + 8);
   }else if(/Baiduspider/.test(agent)){
     browserName = 'Baiduspider';
-    fullVersion = 0;
+    fullVersion = '0';
   }else if(/Googlebot/.test(agent)){
     browserName = 'Googlebot';
-    fullVersion = 0;
+    fullVersion = '0';
   }
 // In most other browsers, "name/version" is at the end of userAgent
   else if ((nameOffset = agent.lastIndexOf(' ') + 1) < (verOffset = agent.lastIndexOf('/'))) {
