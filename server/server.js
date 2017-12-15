@@ -15,7 +15,7 @@ import {connection} from './mongoConfig';
 import staticCache from 'koa-static-cache';
 import serve from 'koa-static';
 import visitLogServer from "./services/visitLogServer";
-import {getBrowserInfo} from "./framework/util";
+import {getBrowserInfo, getIpInfo} from "./framework/util";
 
 
 const port = parseInt(process.env.PORT, 10) || 8080;
@@ -62,18 +62,18 @@ nextApp.prepare().then(() => {
     const {body} = ctx.request;
     const url = body.pageUrl || ctx.originalUrl;
     if (url.indexOf('.') === -1 && !/\/admin/.test(url) && !body.__server) {
-      const userAgent = ctx.req.headers['user-agent'];
-      const browserInfo = getBrowserInfo(userAgent);
-      const log = {
-        url,
-        ip: ctx.req.headers['x-forwarded-for'] || ctx.request.ip,
-        userAgent: userAgent,
-        blogId: /\/blog\?id/.test(url) ? url.replace('/blog?id=', '') : undefined,
-        spentTime: new Date().getTime() - startTime,
-        version: browserInfo.version,
-        browser: browserInfo.browser,
-
-      };
+      const userAgent = ctx.req.headers['user-agent'],
+        browserInfo = getBrowserInfo(userAgent),
+        ip = ctx.req.headers['x-forwarded-for'] || ctx.request.ip,
+        log = {
+          url,
+          ip,
+          userAgent: userAgent,
+          blogId: /\/blog\?id/.test(url) ? url.replace('/blog?id=', '') : undefined,
+          spentTime: new Date().getTime() - startTime,
+          version: browserInfo.version,
+          browser: browserInfo.browser,
+        };
       await visitLogServer.addVisitLog(log);
     }
   });

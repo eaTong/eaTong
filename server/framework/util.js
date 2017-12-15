@@ -1,11 +1,19 @@
 /**
  * Created by eatong on 17-11-22.
  */
+
+const axios = require('axios');
+
 export function grabContent(str) {
   const reg = new RegExp('\<[^>]*\>\s*', 'g');
   return str.replace(reg, '').replace(/\n/g, '');
 }
 
+/**
+ * 获取浏览器信息
+ * @param agent
+ * @returns {{browser: string, version: number}}
+ */
 export function getBrowserInfo(agent) {
   let nameOffset, verOffset, ix, browserName = 'unknow', fullVersion = 0;
 
@@ -42,10 +50,10 @@ export function getBrowserInfo(agent) {
   else if ((verOffset = agent.indexOf("Firefox")) !== -1) {
     browserName = "Firefox";
     fullVersion = agent.substring(verOffset + 8);
-  }else if(/Baiduspider/.test(agent)){
+  } else if (/Baiduspider/.test(agent)) {
     browserName = 'Baiduspider';
     fullVersion = '0';
-  }else if(/Googlebot/.test(agent)){
+  } else if (/Googlebot/.test(agent)) {
     browserName = 'Googlebot';
     fullVersion = '0';
   }
@@ -64,4 +72,11 @@ export function getBrowserInfo(agent) {
   return {browser: browserName, version: majorVersion};
 }
 
-
+/**
+ * 获取IP地址信息
+ * @param ip
+ * @returns {Promise<*>}
+ */
+export async function getIpInfo(ip) {
+  return await  axios.get(`http://ip.taobao.com/service/getIpInfo.php?ip=${ip}`);
+}

@@ -11,7 +11,7 @@ import mdStyle from '../styles/md-editor.scss';
 export default class MyDocument extends Document {
   render() {
     return (
-      <html lang="en">
+      <html lang="zh-cn">
       {process.env.NODE_ENV === 'production'
         ? (
           <Head>
