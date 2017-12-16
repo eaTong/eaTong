@@ -18,7 +18,16 @@ export function getBrowserInfo(agent) {
   let nameOffset, verOffset, ix, browserName = 'unknow', fullVersion = 0;
 
 // In Opera 15+, the true version is after "OPR/"
-  if ((verOffset = agent.indexOf("OPR/")) !== -1) {
+  if (/Baiduspider/.test(agent)) {
+    browserName = 'Baiduspider';
+    fullVersion = '0';
+  } else if (/Googlebot/.test(agent)) {
+    browserName = 'Googlebot';
+    fullVersion = '0';
+  } else if (/Alibaba/.test(agent)) {
+    browserName = 'Alibaba.Security';
+    fullVersion = '0';
+  } else if ((verOffset = agent.indexOf("OPR/")) !== -1) {
     browserName = "Opera";
     fullVersion = agent.substring(verOffset + 4);
   }
@@ -50,12 +59,6 @@ export function getBrowserInfo(agent) {
   else if ((verOffset = agent.indexOf("Firefox")) !== -1) {
     browserName = "Firefox";
     fullVersion = agent.substring(verOffset + 8);
-  } else if (/Baiduspider/.test(agent)) {
-    browserName = 'Baiduspider';
-    fullVersion = '0';
-  } else if (/Googlebot/.test(agent)) {
-    browserName = 'Googlebot';
-    fullVersion = '0';
   }
 // In most other browsers, "name/version" is at the end of userAgent
   else if ((nameOffset = agent.lastIndexOf(' ') + 1) < (verOffset = agent.lastIndexOf('/'))) {
