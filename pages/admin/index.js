@@ -26,6 +26,9 @@ class Admin extends Component {
           <Link href="/admin/blog"><a>blog list</a></Link>
         </p>
         <p>
+          <Link href="/admin/blog/md-write"><a>write a blog with markdown</a></Link>
+        </p>
+        <p>
           <Link href="/admin/blog/write"><a>write a blog</a></Link>
         </p>
         <p>
