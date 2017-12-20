@@ -1,11 +1,26 @@
 .mde-container {
   padding: 10px;
   display: flex;
+  flex-wrap: wrap;
   width: 100%;
   min-height: 100%;
   box-sizing: border-box;
   flex-direction: row;
   align-items: stretch;
+
+  .toolbar {
+    width: 100%;
+    padding: 5px;
+    background: #efefef;
+    display: flex;
+    .tools {
+      flex: 1;
+      cursor: pointer;
+    }
+    .count {
+      color: #666;
+    }
+  }
 
   .mde-textarea {
     flex: 1;

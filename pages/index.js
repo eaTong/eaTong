@@ -1,5 +1,5 @@
 import React from 'react'
-import {Page , Footer} from '../components'
+import {Page, Footer} from '../components'
 import Link from 'next/link';
 import Head from 'next/head'
 import {inject, observer} from 'mobx-react';
@@ -22,12 +22,12 @@ class Index extends React.Component {
         </Head>
         <div className="hero-body">
           <div className="container">
-            <h1 className="title">Personal Site written by eaTong with Next.js</h1>
+            <h1 className="title">eaTong 个人站</h1>
             {blog.blogList.map((item, index) => (
               <div className="media" key={item._id}>
                 <div className="media-content">
                   <Link href={{pathname: '/blog', query: {id: item._id}}}>
-                    <a className="content">{item.title}</a>
+                    <a><h2 className="content">{item.title}</h2></a>
                   </Link>
                   <p className="content has-text-grey">{item.info}</p>
                 </div>

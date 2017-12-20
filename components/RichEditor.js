@@ -36,6 +36,7 @@ export default class RichEditor extends Component {
     return new Promise((resolve, reject) => {
       const formData = new FormData();
       formData.append('file', file);
+      debugger;
       ajax({
         url: '/api/image/upload',
         data: formData,

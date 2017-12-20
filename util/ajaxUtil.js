@@ -31,7 +31,8 @@ export default async function ajax(config) {
     let result;
     store.app.loading();
     try {
-      result = await axios.post(url, {...data, pageUrl: window.location.pathname + window.location.search});
+      const formData = headers ? data : {...data, pageUrl: window.location.pathname + window.location.search};
+      result = await axios.post(url, formData, {headers: headers});
       if (!result.data.success) {
         notify.error({content: result.data.message})
       }
