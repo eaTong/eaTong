@@ -58,6 +58,7 @@ async function pickImage(callback) {
     uploader = document.createElement('input');
     uploader.type = 'file';
     uploader.id = 'md-uploader';
+    uploader.style.display = 'none';
     document.body.appendChild(uploader);
     uploader.click();
   }
