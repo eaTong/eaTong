@@ -9,7 +9,7 @@ import ajax from '../util/ajaxUtil';
 class Index extends React.Component {
 
   static async init(ctx) {
-    const {data} = await ajax({url: '/api/pub/blog/list', ctx});
+    const {data} = await ajax({url: '/api/pub/published-blog', ctx});
     return {blog: {blogList: data}};
   }
 

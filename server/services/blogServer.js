@@ -7,7 +7,23 @@ import {grabContent} from '../framework/util';
 const INFO_LENGTH = 200;
 
 export async function writeBlog(data) {
-  const blog = new Blog({...data, viewCount: 0, publishTime: new Date()});
+  const blog = new Blog({...data, viewCount: 0});
+  blog.info = grabContent(data.content).slice(0, INFO_LENGTH);
+  return await blog.save();
+}
+
+export async function publishBlog(data) {
+  let blog;
+  if (data.id) {
+    blog = await Blog.findById(data.id);
+    blog.title = data.title;
+    blog.content = data.content;
+    blog.info = grabContent(data.content).slice(0, INFO_LENGTH);
+    blog.publishTime = new Date();
+  } else {
+    blog = new Blog({...data, viewCount: 0});
+  }
+  blog.published = true;
   blog.info = grabContent(data.content).slice(0, INFO_LENGTH);
   return await blog.save();
 }
@@ -18,14 +34,15 @@ export async function updateBlog(data) {
   blog.content = data.content;
   blog.info = grabContent(data.content).slice(0, INFO_LENGTH);
   blog.updateTime = new Date();
+
   blog.history = blog.history ? blog.history : [];
   blog.history.push({time: new Date(), commit: data.commit, content: data.content});
   await blog.save();
   return blog;
 }
 
-export async function getBlogList() {
-  return Blog.find().select('title publishTime info viewCount isMarkdown').sort({publishTime: -1})
+export async function getBlogList(published) {
+  return Blog.find({published}).select('title publishTime info viewCount isMarkdown').sort({publishTime: -1})
 }
 
 export async function getBlogById(id, countShouldAdd) {

@@ -23,6 +23,11 @@ export default class BlogApi {
     return await blogServer.getBlogList();
   }
 
+  static async getPublishedBlog(ctx) {
+    const published = true;
+    return await blogServer.getBlogList(published);
+  }
+
   static async getBlogById(ctx) {
     const {body} = ctx.request;
     const readBlog = ctx.session.readBlog || {};

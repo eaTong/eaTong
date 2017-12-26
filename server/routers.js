@@ -4,7 +4,7 @@ import UserApi from './apis/userApi';
 import FileApi from './apis/fileApi';
 import BlogApi from './apis/blogApi';
 import VisitLogApi from './apis/visitLogApi';
-import {ArgMissError , LogicError} from './framework/errors';
+import {ArgMissError, LogicError} from './framework/errors';
 
 
 const router = new Router();
@@ -46,7 +46,8 @@ router.post('/api/image/upload', FileApi.uploadImage);
 
 router.post('/api/blog/write', BlogApi.writeBlog);
 router.post('/api/blog/update', BlogApi.updateBlog);
-router.post('/api/pub/blog/list', BlogApi.getBlogList);
+router.post('/api/blog/list', BlogApi.getBlogList);
+router.post('/api/pub/published-blog', BlogApi.getPublishedBlog);
 router.post('/api/pub/blog/detail', BlogApi.getBlogById);
 
 router.post('/api/visit-log/list', VisitLogApi.getVisitLogs);

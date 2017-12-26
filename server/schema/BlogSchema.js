@@ -6,11 +6,13 @@ import mongoose, {Schema} from '../mongoConfig';
 const BlogSchema = new Schema({
   title: String,
   content: String,
+  publishedContent: String,
   info: String,
   viewCount: Number,
   publishTime: Date,
   history: Array,
-  isMarkdown: Boolean
+  published: Boolean,
+  isMarkdown: Boolean,
 });
 
 export default mongoose.model('blog', BlogSchema);
