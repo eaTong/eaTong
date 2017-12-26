@@ -1,7 +1,7 @@
 /**
  * Created by eatong on 17-11-16.
  */
-import mongoose, {Schema} from '../mongoConfig';
+const {mongoose, Schema} = require ('../mongoConfig');
 
 const BlogSchema = new Schema({
   title: String,
@@ -15,4 +15,4 @@ const BlogSchema = new Schema({
   isMarkdown: Boolean,
 });
 
-export default mongoose.model('blog', BlogSchema);
+module.exports =mongoose.model('blog', BlogSchema);

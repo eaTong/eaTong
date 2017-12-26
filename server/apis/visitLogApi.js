@@ -1,11 +1,11 @@
 /**
  * Created by eatong on 17-12-9.
  */
-import {checkArgument} from '../framework/apiDecorator';
-import visitLogServer from '../services/visitLogServer';
+const {checkArgument} = require ('../framework/apiDecorator');
+const visitLogServer = require ('../services/visitLogServer');
 
 
-export default class TodoApi {
+module.exports =class TodoApi {
 
   static async getVisitLogs(ctx) {
     return await visitLogServer.getVisitLogs();

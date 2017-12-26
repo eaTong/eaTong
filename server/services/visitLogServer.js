@@ -1,9 +1,9 @@
-import VisitLog from "../schema/VisitLogSchema";
+const VisitLog = require ('../schema/VisitLogSchema');
 
 /**
  * Created by eatong on 17-12-8.
  */
-export async function addVisitLog(data) {
+ async function addVisitLog(data) {
   const log = new VisitLog({
     ...data,
     blog: data.blogId,
@@ -12,9 +12,9 @@ export async function addVisitLog(data) {
   return await log.save();
 }
 
-export async function getVisitLogs(data) {
+async function getVisitLogs(data) {
   return await VisitLog.find().populate('blog', 'title').sort({visitTime: -1});
 }
 
 
-export default {getVisitLogs, addVisitLog}
+module.exports ={getVisitLogs, addVisitLog};

@@ -1,18 +1,18 @@
 /**
  * Created by eatong on 17-11-16.
  */
-import Blog from '../schema/BlogSchema';
-import {grabContent} from '../framework/util';
+const Blog = require('../schema/BlogSchema');
+const {grabContent} = require('../framework/util');
 
 const INFO_LENGTH = 200;
 
-export async function writeBlog(data) {
+async function writeBlog(data) {
   const blog = new Blog({...data, viewCount: 0});
   blog.info = grabContent(data.content).slice(0, INFO_LENGTH);
   return await blog.save();
 }
 
-export async function publishBlog(data) {
+async function publishBlog(data) {
   let blog;
   if (data.id) {
     blog = await Blog.findById(data.id);
@@ -28,7 +28,7 @@ export async function publishBlog(data) {
   return await blog.save();
 }
 
-export async function updateBlog(data) {
+async function updateBlog(data) {
   const blog = await Blog.findById(data.id);
   blog.title = data.title;
   blog.content = data.content;
@@ -41,11 +41,11 @@ export async function updateBlog(data) {
   return blog;
 }
 
-export async function getBlogList(published) {
+async function getBlogList(published) {
   return Blog.find({published}).select('title publishTime info viewCount isMarkdown').sort({publishTime: -1})
 }
 
-export async function getBlogById(id, countShouldAdd) {
+async function getBlogById(id, countShouldAdd) {
   const blog = await Blog.findById(id);
   if (countShouldAdd) {
     blog.viewCount = blog.viewCount ? blog.viewCount + 1 : 1;
@@ -54,4 +54,4 @@ export async function getBlogById(id, countShouldAdd) {
   return blog;
 }
 
-export default {writeBlog, getBlogList, getBlogById, updateBlog}
+module.exports = {writeBlog, publishBlog, getBlogList, getBlogById, updateBlog};

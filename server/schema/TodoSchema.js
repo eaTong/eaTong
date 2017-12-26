@@ -1,11 +1,11 @@
 /**
  * Created by eatong on 17-11-4.
  */
-import mongoose, {Schema} from '../mongoConfig';
+const {mongoose, Schema} = require ('../mongoConfig');
 
 const TodoSchema = new Schema({
   name: String,
   completed: Boolean
 });
 
-export default mongoose.model('todo', TodoSchema);
+module.exports =mongoose.model('todo', TodoSchema);

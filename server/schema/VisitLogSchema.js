@@ -2,7 +2,7 @@
  * Created by eatong on 17-12-8.
  */
 
-import mongoose, {Schema} from '../mongoConfig';
+const {mongoose, Schema} = require ('../mongoConfig');
 
 const VisitLogSchema = new Schema({
   ip: {type: String},
@@ -15,4 +15,4 @@ const VisitLogSchema = new Schema({
   visitTime: {type: Date},//耗时
 });
 
-export default mongoose.model('visitLog', VisitLogSchema);
+module.exports =mongoose.model('visitLog', VisitLogSchema);

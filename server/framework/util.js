@@ -4,17 +4,17 @@
 
 const axios = require('axios');
 
-export function grabContent(str) {
+module.exports.grabContent = function grabContent(str) {
   const reg = new RegExp('\<[^>]*\>\s*', 'g');
   return str.replace(reg, '').replace(/\n/g, '');
-}
+};
 
 /**
  * 获取浏览器信息
  * @param agent
  * @returns {{browser: string, version: number}}
  */
-export function getBrowserInfo(agent) {
+module.exports.getBrowserInfo = function getBrowserInfo(agent) {
   let nameOffset, verOffset, ix, browserName = 'unknow', fullVersion = 0;
 
 // In Opera 15+, the true version is after "OPR/"
@@ -73,13 +73,13 @@ export function getBrowserInfo(agent) {
 
   const majorVersion = parseInt('' + fullVersion, 10) || 0;
   return {browser: browserName, version: majorVersion};
-}
+};
 
 /**
  * 获取IP地址信息
  * @param ip
  * @returns {Promise<*>}
  */
-export async function getIpInfo(ip) {
+module.exports.getIpInfo = async function getIpInfo(ip) {
   return await  axios.get(`http://ip.taobao.com/service/getIpInfo.php?ip=${ip}`);
-}
+};

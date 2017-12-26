@@ -1,13 +1,13 @@
 /**
  * Created by eatong on 17-11-7.
  */
-import {checkArgument} from '../framework/apiDecorator';
-import {LogicError} from '../framework/errors';
-import userServer from '../services/userServer';
+const {checkArgument} = require ('../framework/apiDecorator');
+const {LogicError} = require ('../framework/errors');
+const userServer = require ('../services/userServer');
 
-export default class UserApi {
+module.exports =class UserApi {
 
-  @checkArgument(['account', 'password'])
+ // @checkArgument(['account', 'password'])
   static async login(ctx) {
     const data = ctx.request.body;
     const user = await userServer.login(data.account, data.password);

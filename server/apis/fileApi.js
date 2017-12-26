@@ -1,11 +1,11 @@
 /**
  * Created by eatong on 17-11-10.
  */
-import fs from 'fs';
-import path from 'path';
-import {v4} from 'uuid';
+const fs = require ('fs');
+const path = require ('path');
+const {v4} = require ('uuid');
 
-export default class FileApi {
+module.exports =class FileApi {
 
   static async uploadImage(ctx) {
     const file = ctx.request.body.files.file;

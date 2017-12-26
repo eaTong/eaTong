@@ -1,20 +1,20 @@
 /**
  * Created by eatong on 17-11-16.
  */
-import {checkArgument} from '../framework/apiDecorator';
-import blogServer from '../services/blogServer';
-import visitLogServer from "../services/visitLogServer";
+const {checkArgument} = require ('../framework/apiDecorator');
+const blogServer = require ('../services/blogServer');
+const visitLogServer = require ('../services/visitLogServer');
 
 
-export default class BlogApi {
+module.exports =class BlogApi {
 
 
-  @checkArgument(['title', 'content'])
+ // @checkArgument(['title', 'content'])
   static async writeBlog(ctx) {
     return await blogServer.writeBlog(ctx.request.body);
   }
 
-  @checkArgument(['id', 'title', 'content'])
+ // @checkArgument(['id', 'title', 'content'])
   static async updateBlog(ctx) {
     return await blogServer.updateBlog(ctx.request.body);
   }
@@ -41,7 +41,7 @@ export default class BlogApi {
     return await blogServer.getBlogById(body.id, body.operate !== 'edit' && !blogHasRead && !isSpider);
   }
 
-  @checkArgument('id')
+ // @checkArgument('id')
   static async deleteBlog(ctx) {
 
   }

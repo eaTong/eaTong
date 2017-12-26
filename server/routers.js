@@ -1,10 +1,10 @@
-import Router from 'koa-router';
-import TodoApi from './apis/todoApi';
-import UserApi from './apis/userApi';
-import FileApi from './apis/fileApi';
-import BlogApi from './apis/blogApi';
-import VisitLogApi from './apis/visitLogApi';
-import {ArgMissError, LogicError} from './framework/errors';
+const Router = require ('koa-router');
+const TodoApi = require ('./apis/todoApi');
+const UserApi = require ('./apis/userApi');
+const FileApi = require ('./apis/fileApi');
+const BlogApi = require ('./apis/blogApi');
+const VisitLogApi = require ('./apis/visitLogApi');
+const {ArgMissError, LogicError} = require ('./framework/errors');
 
 
 const router = new Router();
@@ -57,4 +57,4 @@ router.post('/api/*', async ctx => {
   ctx.body = 'api not found';
 });
 
-export default router;
+module.exports =router;
