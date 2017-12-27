@@ -9,6 +9,10 @@ const INFO_LENGTH = 200;
 async function writeBlog(data) {
   const blog = new Blog({...data, viewCount: 0});
   blog.info = grabContent(data.content).slice(0, INFO_LENGTH);
+  if (data.publish) {
+    blog.published = true;
+    blog.publishedContent = blog.content;
+  }
   return await blog.save();
 }
 

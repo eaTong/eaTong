@@ -17,16 +17,20 @@ export default class BlogAdmin {
   }
 
   @action
-  async writeBlog(isMarkdown) {
-    const {success} = await ajax({url: '/api/blog/write', data: {...this.blogForm, isMarkdown: !!isMarkdown}});
+  async writeBlog(isMarkdown, publish) {
+    console.log(isMarkdown, publish);
+    const {success} = await ajax({
+      url: '/api/blog/write',
+      data: {...this.blogForm, isMarkdown: !!isMarkdown, publish: !!publish}
+    });
     if (success) {
       notify.success({content: '新增博客成功'})
     }
   }
 
   @action
-  async updateBlog(id) {
-    const {success, data} = await ajax({url: '/api/blog/update', data: {...this.blogForm, id}});
+  async updateBlog(id, publish) {
+    const {success, data} = await ajax({url: '/api/blog/update', data: {...this.blogForm, id, publish: !!publish}});
     if (success) {
       notify.success({content: '编辑博客成功'})
     }

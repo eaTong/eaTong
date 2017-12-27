@@ -45,4 +45,4 @@ module.exports =class BlogApi {
   static async deleteBlog(ctx) {
 
   }
-}
+};

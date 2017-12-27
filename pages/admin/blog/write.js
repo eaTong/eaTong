@@ -19,12 +19,12 @@ class WriteBlog extends Component {
     }
   }
 
-  async onSaveBlog() {
+  async onSaveBlog(publish) {
     const query = this.props.query;
     if (query.id) {
-      await this.props.blogAdmin.updateBlog(query.id);
+      await this.props.blogAdmin.updateBlog(query.id, publish);
     } else {
-      await this.props.blogAdmin.writeBlog();
+      await this.props.blogAdmin.writeBlog(false, publish);
     }
   }
 
@@ -66,10 +66,16 @@ class WriteBlog extends Component {
           <div className="media-content"/>
           <div className="media-right">
             <button
-              className="button is-primary"
-              onClick={this.onSaveBlog.bind(this)}
+              className="button"
+              onClick={()=>this.onSaveBlog()}
             >
               保存
+            </button>
+            <button
+              className="button is-primary"
+              onClick={()=>this.onSaveBlog( true)}
+            >
+              保存并发布
             </button>
           </div>
         </div>
