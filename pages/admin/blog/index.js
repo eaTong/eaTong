@@ -13,7 +13,7 @@ import ajax from '../../../util/ajaxUtil';
 class Blog extends Component {
 
   static async init(ctx) {
-    const {data} = await ajax({url: '/api/pub/blog/list', ctx});
+    const {data} = await ajax({url: '/api/blog/list', ctx});
     return {blogAdmin: {blogList: data}};
   }
 

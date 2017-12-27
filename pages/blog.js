@@ -4,7 +4,7 @@
 import React, {Component} from 'react';
 import {Page} from '~components';
 import Link from 'next/link';
-import Head from 'next/head'
+import Head from 'next/head';
 import {inject, observer} from 'mobx-react'
 import ajax from '../util/ajaxUtil';
 import ReactMarkdown from 'react-markdown';
@@ -39,7 +39,7 @@ class Blog extends Component {
                 <ReactMarkdown source={blog.blog.content}/>
               )}
               {!blog.blog.isMarkdown && (
-                <div dangerouslySetInnerHTML={{__html: blog.blog.content || '<div></div>'}}/>
+                <div dangerouslySetInnerHTML={{__html: blog.blog.publishedContent || '<div></div>'}}/>
               )}
             </div>
           </div>

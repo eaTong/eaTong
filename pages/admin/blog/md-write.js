@@ -3,7 +3,7 @@
  */
 import React, {Component} from 'react';
 import Link from 'next/link';
-import Head from 'next/head'
+import Head from 'next/head';
 import {Page, MdEditor} from '~components';
 import {inject, observer} from 'mobx-react'
 import ajax from "../../../util/ajaxUtil";
@@ -41,7 +41,7 @@ class MarkdownWrite extends Component {
           <ul className="column">
             <li><Link href="/admin"><a>admin</a></Link></li>
             <li><Link href="/admin/blog"><a>blog list</a></Link></li>
-            <li className="is-active"><a aria-current="page">write blog</a></li>
+            <li className="is-active"><a aria-current="page"> write blog</a></li>
           </ul>
         </nav>
         <div className="column">
@@ -53,7 +53,7 @@ class MarkdownWrite extends Component {
                  onChange={(event) => blogAdmin.updateForm('title', event.target.value)}/>
         </div>
         <div className="column">
-          <h2 className="subtitle">正文：</h2>
+          <h2 className="subtitle">正文({blogAdmin.blogForm.published ? '已发布' : ''})：</h2>
           <MdEditor viewerClass="content"
                     onChange={(val) => blogAdmin.updateForm('content', val)}
                     value={blogAdmin.blogForm.content}/>
@@ -71,13 +71,13 @@ class MarkdownWrite extends Component {
           <div className="media-right">
             <button
               className="button"
-              onClick={()=>this.onSaveBlog()}
+              onClick={() => this.onSaveBlog()}
             >
               保存
             </button>
             <button
               className="button is-primary"
-              onClick={()=>this.onSaveBlog( true)}
+              onClick={() => this.onSaveBlog(true)}
             >
               保存并发布
             </button>
