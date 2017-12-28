@@ -1,10 +1,11 @@
-const Router = require ('koa-router');
-const TodoApi = require ('./apis/todoApi');
-const UserApi = require ('./apis/userApi');
-const FileApi = require ('./apis/fileApi');
-const BlogApi = require ('./apis/blogApi');
-const VisitLogApi = require ('./apis/visitLogApi');
-const {ArgMissError, LogicError} = require ('./framework/errors');
+const Router = require('koa-router');
+const TodoApi = require('./apis/todoApi');
+const UserApi = require('./apis/userApi');
+const FileApi = require('./apis/fileApi');
+const BlogApi = require('./apis/blogApi');
+const VisitLogApi = require('./apis/visitLogApi');
+const {checkArguments} = require('./framework/middleWare');
+const {ArgMissError, LogicError} = require('./framework/errors');
 
 
 const router = new Router();
@@ -40,13 +41,13 @@ router.post('/api/todo/get', TodoApi.getTodo);
 router.post('/api/todo/add', TodoApi.addTodo);
 router.post('/api/todo/toggle', TodoApi.toggleTodo);
 
-router.post('/api/user/login', UserApi.login);
+router.post('/api/user/login', checkArguments(['account', 'password']), UserApi.login);
 
 router.post('/api/image/upload', FileApi.uploadImage);
 
-router.post('/api/blog/write', BlogApi.writeBlog);
-router.post('/api/blog/update', BlogApi.updateBlog);
-router.post('/api/blog/list', BlogApi.getBlogList);
+router.post('/api/blog/write', checkArguments(['content', 'title']), BlogApi.writeBlog);
+router.post('/api/blog/update', checkArguments(['id', 'title', 'content']), BlogApi.updateBlog);
+router.post('/api/blog/list', checkArguments('test'), BlogApi.getBlogList);
 router.post('/api/pub/published-blog', BlogApi.getPublishedBlog);
 router.post('/api/pub/blog/detail', BlogApi.getBlogById);
 
@@ -57,4 +58,4 @@ router.post('/api/*', async ctx => {
   ctx.body = 'api not found';
 });
 
-module.exports =router;
+module.exports = router;

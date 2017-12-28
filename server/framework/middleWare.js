@@ -1,13 +1,12 @@
 /**
- * Created by eatong on 17-11-6.
+ * Created by eatong on 17-12-28.
  */
-const {ArgMissError} = require ('./errors');
 
-function checkArgument(args) {
-  return function (target, name, descriptor) {
-    const oldValue = descriptor.value;
-    descriptor.value = function () {
-      const [ctx, next] = arguments;
+const {ArgMissError} = require('./errors');
+
+module.exports.checkArguments = (args) => {
+  return async (ctx, next) => {
+    if (args) {
       const bodyKeys = Object.keys(ctx.request.body);
       if (typeof args === 'string') {
         if (bodyKeys.indexOf(args) === -1) {
@@ -20,9 +19,7 @@ function checkArgument(args) {
           }
         }
       }
-      return oldValue.apply(null, arguments);
-    };
-
-    return descriptor;
+    }
+    await next();
   }
-}
+};

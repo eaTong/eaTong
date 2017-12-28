@@ -1,20 +1,16 @@
 /**
  * Created by eatong on 17-11-16.
  */
-const {checkArgument} = require ('../framework/apiDecorator');
 const blogServer = require ('../services/blogServer');
 const visitLogServer = require ('../services/visitLogServer');
 
 
 module.exports =class BlogApi {
 
-
- // @checkArgument(['title', 'content'])
   static async writeBlog(ctx) {
     return await blogServer.writeBlog(ctx.request.body);
   }
 
- // @checkArgument(['id', 'title', 'content'])
   static async updateBlog(ctx) {
     return await blogServer.updateBlog(ctx.request.body);
   }
@@ -41,7 +37,6 @@ module.exports =class BlogApi {
     return await blogServer.getBlogById(body.id, body.operate !== 'edit' && !blogHasRead && !isSpider);
   }
 
- // @checkArgument('id')
   static async deleteBlog(ctx) {
 
   }

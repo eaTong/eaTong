@@ -5,7 +5,7 @@ const fs = require ('fs');
 const path = require ('path');
 const {v4} = require ('uuid');
 
-module.exports =class FileApi {
+module.exports = class FileApi {
 
   static async uploadImage(ctx) {
     const file = ctx.request.body.files.file;
@@ -16,4 +16,4 @@ module.exports =class FileApi {
     reader.pipe(stream);
     return fileName;
   }
-}
+};
