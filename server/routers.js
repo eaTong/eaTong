@@ -47,7 +47,7 @@ router.post('/api/image/upload', FileApi.uploadImage);
 
 router.post('/api/blog/write', checkArguments(['content', 'title']), BlogApi.writeBlog);
 router.post('/api/blog/update', checkArguments(['id', 'title', 'content']), BlogApi.updateBlog);
-router.post('/api/blog/list', checkArguments('test'), BlogApi.getBlogList);
+router.post('/api/blog/list', BlogApi.getBlogList);
 router.post('/api/pub/published-blog', BlogApi.getPublishedBlog);
 router.post('/api/pub/blog/detail', BlogApi.getBlogById);
 
