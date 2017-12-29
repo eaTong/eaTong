@@ -5,7 +5,7 @@ const blogServer = require ('../services/blogServer');
 const visitLogServer = require ('../services/visitLogServer');
 
 
-module.exports =class BlogApi {
+module.exports = class BlogApi {
 
   static async writeBlog(ctx) {
     return await blogServer.writeBlog(ctx.request.body);

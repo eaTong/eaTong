@@ -24,6 +24,7 @@ async function updateBlog(data) {
   blog.info = grabContent(data.content).slice(0, INFO_LENGTH);
   blog.updateTime = new Date();
   if (data.publish) {
+    blog.published = true;
     blog.history = blog.history ? blog.history : [];
     blog.history.push({time: new Date(), commit: data.commit, content: data.content});
     blog.publishedContent = data.content;
@@ -33,7 +34,7 @@ async function updateBlog(data) {
 }
 
 async function getBlogList(published) {
-  const filter = published?{published}:undefined;
+  const filter = published ? {published} : undefined;
   return Blog.find(filter).select('title publishTime info viewCount isMarkdown').sort({publishTime: -1})
 }
 
