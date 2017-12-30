@@ -1,6 +1,6 @@
 import React from 'react'
 import {Page, Footer} from '../components'
-import Link from 'next/link';
+import {Link} from '../page-routes'
 import Head from 'next/head'
 import {inject, observer} from 'mobx-react';
 import ajax from '../util/ajaxUtil';
@@ -26,7 +26,7 @@ class Index extends React.Component {
             {blog.blogList.map((item, index) => (
               <div className="media" key={item._id}>
                 <div className="media-content">
-                  <Link href={{pathname: '/blog', query: {id: item._id}}}>
+                  <Link route='blog' params={{id: item._id}}>
                     <a><h2 className="content">{item.title}</h2></a>
                   </Link>
                   <p className="content has-text-grey">{item.info}</p>

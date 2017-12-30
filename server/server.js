@@ -1,22 +1,22 @@
-const path = require ('path');
-const next = require ('next');
-const {useStaticRendering} = require ('mobx-react');
-const Koa = require ('koa');
-const koaBody = require ('koa-body');
-const koaConnect = require ('koa-connect');
-const compression = require ('compression');
-const cookie = require ('koa-cookie').default;
-const koaLogger = require ('koa-logger');
-const session = require ('koa-session-store');
-const mongoStore = require ('koa-session-mongo');
-const {createLogger, transports} = require ('winston');
-const router = require ('./routers');
-const {connection} = require ('./mongoConfig');
-const staticCache = require ('koa-static-cache');
-const serve = require ('koa-static');
-const visitLogServer = require ('./services/visitLogServer');
-const {getBrowserInfo, getIpInfo} = require ('./framework/util');
-
+const path = require('path');
+const next = require('next');
+const {useStaticRendering} = require('mobx-react');
+const Koa = require('koa');
+const koaBody = require('koa-body');
+const koaConnect = require('koa-connect');
+const compression = require('compression');
+const cookie = require('koa-cookie').default;
+const koaLogger = require('koa-logger');
+const session = require('koa-session-store');
+const mongoStore = require('koa-session-mongo');
+const {createLogger, transports} = require('winston');
+const router = require('./routers');
+const {connection} = require('./mongoConfig');
+const staticCache = require('koa-static-cache');
+const serve = require('koa-static');
+const visitLogServer = require('./services/visitLogServer');
+const {getBrowserInfo, getIpInfo} = require('./framework/util');
+const routes = require('../page-routes');
 
 const port = parseInt(process.env.PORT, 10) || 8080;
 const dev = process.env.NODE_ENV !== 'production';
@@ -92,10 +92,11 @@ nextApp.prepare().then(() => {
     }
   });
 
-  //next handle all router
-  router.get('*', async ctx => {
-    await handle(ctx.req, ctx.res);
-    ctx.respond = false
+  const handler = routes.getRequestHandler(nextApp);
+  app.use(ctx => {
+    ctx.respond = false;
+    ctx.res.statusCode = 200; // because koa defaults to 404
+    handler(ctx.req, ctx.res)
   });
 
   app.listen(port, (err) => {
