@@ -1,7 +1,6 @@
 import React from 'react'
-import {Page, Footer} from '../components'
+import {Page, Footer, Title} from '../components'
 import {Link} from '../page-routes'
-import Head from 'next/head'
 import {inject, observer} from 'mobx-react';
 import ajax from '../util/ajaxUtil';
 
@@ -17,9 +16,7 @@ class Index extends React.Component {
     const {blog} = this.props;
     return (
       <div className="hero is-medium">
-        <Head>
-          <title>周夷东(eaTong)个人站</title>
-        </Head>
+        <Title>首页</Title>
         <div className="hero-body">
           <div className="container">
             <h1 className="title">eaTong 个人站</h1>

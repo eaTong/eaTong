@@ -6,6 +6,7 @@ import Loading from './Loading';
 import RichEditor from './RichEditor';
 import MdEditor from './MdEditor';
 import Footer from './Footer';
+import Title from './Title';
 
 export {
   Page,
@@ -13,4 +14,5 @@ export {
   RichEditor,
   MdEditor,
   Footer,
+  Title,
 }

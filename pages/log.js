@@ -2,9 +2,8 @@
  * Created by eatong on 17-12-12.
  */
 import React, {Component} from 'react';
-import {Page, Footer} from '~components';
+import {Page, Footer,Title} from '~components';
 import Link from 'next/link';
-import Head from 'next/head'
 
 class Log extends Component {
 
@@ -13,9 +12,7 @@ class Log extends Component {
     return (
       <div className="hero">
         <div className="hero-head">
-          <Head>
-            <title>网站日志</title>
-          </Head>
+            <Title>网站日志</Title>
           <div className="container">
             <nav className="breadcrumb">
               <ul className="column">

@@ -2,7 +2,7 @@
  * Created by eatong on 17-11-16.
  */
 import React, {Component} from 'react';
-import {Page} from '~components';
+import {Page,Title} from '~components';
 import Link from 'next/link';
 import Head from 'next/head';
 import {inject, observer} from 'mobx-react'
@@ -22,9 +22,7 @@ class Blog extends Component {
     const {blog} = this.props;
     return (
       <div className="container">
-        <Head>
-          <title>{blog.blog.title}</title>
-        </Head>
+          <Title>{blog.blog.title}</Title>
         <nav className="breadcrumb">
           <ul className="column">
             <li><Link href="/"><a>首页</a></Link></li>

@@ -28,6 +28,7 @@ async function updateBlog(data) {
     blog.history = blog.history ? blog.history : [];
     blog.history.push({time: new Date(), commit: data.commit, content: data.content});
     blog.publishedContent = data.content;
+    blog.publishTime = new Date();
   }
   await blog.save();
   return blog;
