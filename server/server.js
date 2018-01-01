@@ -21,7 +21,6 @@ const routes = require('../page-routes');
 const port = parseInt(process.env.PORT, 10) || 8080;
 const dev = process.env.NODE_ENV !== 'production';
 const nextApp = next({dev});
-const handle = nextApp.getRequestHandler();
 //define logger
 const logger = createLogger({
   level: 'info',
