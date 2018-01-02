@@ -65,6 +65,13 @@ class Log extends Component {
                   <p>根据SEO规则优化页面路由。</p>
                 </div>
               </div>
+              <div className="timeline-item">
+                <div className="timeline-marker"/>
+                <div className="timeline-content">
+                  <p className="heading">2018-01-02</p>
+                  <p>发布博客的时候自动更新sitemap。</p>
+                </div>
+              </div>
 
               <div className="timeline-header">
                 <span className="tag is-medium is-primary">Next</span>
