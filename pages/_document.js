@@ -26,6 +26,9 @@ export default class MyDocument extends Document {
             <meta name="description" content="eaTong个人站; personal website for eaTong"/>
             <meta name="renderer" content="webkit|ie-stand|ie-comp"/>
             <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+            <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+            <meta name="sogou_site_verification" content="oxL8uSjZnC"/>
+
             <script src="//msite.baidu.com/sdk/c.js?appid=1586633791440102"></script>
           </Head>
         ) : (
