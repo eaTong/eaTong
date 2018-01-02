@@ -21,24 +21,26 @@ class Blog extends Component {
   render() {
     const {blog} = this.props;
     return (
-      <div className="container">
-        <Title>{blog.blog.title}</Title>
-        <nav className="breadcrumb">
-          <ul className="column">
-            <li><Link href="/"><a>首页</a></Link></li>
-            <li className="is-active"><a aria-current="page">{blog.blog.title}</a></li>
-          </ul>
-        </nav>
-        <div className="hero">
-          <div className="hero-body">
-            <h1 className="title has-text-centered">{blog.blog.title}</h1>
-            <div className="content">
-              {blog.blog.isMarkdown && (
-                <ReactMarkdown source={blog.blog.content}/>
-              )}
-              {!blog.blog.isMarkdown && (
-                <div dangerouslySetInnerHTML={{__html: blog.blog.publishedContent || '<div></div>'}}/>
-              )}
+      <div>
+        <div className="container">
+          <Title>{blog.blog.title}</Title>
+          <nav className="breadcrumb">
+            <ul className="column">
+              <li><Link href="/"><a>首页</a></Link></li>
+              <li className="is-active"><a aria-current="page">{blog.blog.title}</a></li>
+            </ul>
+          </nav>
+          <div className="hero">
+            <div className="hero-body">
+              <h1 className="title has-text-centered">{blog.blog.title}</h1>
+              <div className="content">
+                {blog.blog.isMarkdown && (
+                  <ReactMarkdown source={blog.blog.content}/>
+                )}
+                {!blog.blog.isMarkdown && (
+                  <div dangerouslySetInnerHTML={{__html: blog.blog.publishedContent || '<div></div>'}}/>
+                )}
+              </div>
             </div>
           </div>
         </div>
