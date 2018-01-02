@@ -32,7 +32,7 @@ class VisitLog extends Component {
           <tbody>
           {visitLog.logs.map(log => (
             <tr key={log._id}>
-              <td>{log.url}</td>
+              <td>{log.url.slice(0,150)}</td>
               <td>{log.ip}</td>
               <td>{log.browser + '/' + log.version}</td>
               <td>{new Date(log.visitTime).format('YYYY-MM-dd hh:mm:ss')}</td>
