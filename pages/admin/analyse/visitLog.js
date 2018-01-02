@@ -22,7 +22,6 @@ class VisitLog extends Component {
         <table className="table">
           <thead>
           <tr>
-            <th>title</th>
             <th>url</th>
             <th>ip</th>
             <th>browser</th>
@@ -33,7 +32,6 @@ class VisitLog extends Component {
           <tbody>
           {visitLog.logs.map(log => (
             <tr key={log._id}>
-              <td>{log.blog && log.blog.title}</td>
               <td>{log.url}</td>
               <td>{log.ip}</td>
               <td>{log.browser + '/' + log.version}</td>

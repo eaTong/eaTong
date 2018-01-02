@@ -13,7 +13,7 @@ const VisitLog = require ('../schema/VisitLogSchema');
 }
 
 async function getVisitLogs(data) {
-  return await VisitLog.find().populate('blog', 'title').sort({visitTime: -1});
+  return await VisitLog.find().sort({visitTime: -1});
 }
 
 

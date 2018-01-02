@@ -9,7 +9,6 @@ const VisitLogSchema = new Schema({
   userAgent: {type: String},
   browser: {type: String},
   version: {type: Number},
-  blog: {type: String, ref: 'blog'},//关联博客（如果有）
   url: {type: String},//路径
   spentTime: {type: Number},//访问时间
   visitTime: {type: Date},//耗时

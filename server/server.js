@@ -68,7 +68,6 @@ nextApp.prepare().then(() => {
           url,
           ip,
           userAgent: userAgent,
-          blogId: /\/blog\?id/.test(url) ? url.replace('/blog?id=', '') : undefined,
           spentTime: new Date().getTime() - startTime,
           version: browserInfo.version,
           browser: browserInfo.browser,
