@@ -1,15 +1,14 @@
 /**
  * Created by eatong on 17-12-9.
  */
-const visitLogServer = require ('../services/visitLogServer');
+const visitLogServer = require('../services/visitLogServer');
 
 
-module.exports =class TodoApi {
-
-  static async getVisitLogs(ctx) {
-    return await visitLogServer.getVisitLogs();
-  }
+async function getVisitLogs(ctx) {
+  return await visitLogServer.getVisitLogs();
 }
+
+module.exports = {getVisitLogs};
 
 
 

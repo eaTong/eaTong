@@ -3,6 +3,7 @@
  */
 const Blog = require('../schema/BlogSchema');
 const {grabContent} = require('../framework/util');
+const {insertUrlToSitemap} = require('./sitemapServer');
 
 const INFO_LENGTH = 200;
 
@@ -14,7 +15,11 @@ async function writeBlog(data) {
     blog.published = true;
     blog.publishedContent = data.content;
   }
-  return await blog.save();
+  await blog.save();
+  if(data.publish){
+    await insertUrlToSitemap('/blog/' + blog._id.toString());
+  }
+  return blog;
 }
 
 async function updateBlog(data) {
@@ -24,6 +29,9 @@ async function updateBlog(data) {
   blog.info = grabContent(data.content).slice(0, INFO_LENGTH);
   blog.updateTime = new Date();
   if (data.publish) {
+    if(!blog.published){
+      await insertUrlToSitemap('/blog/' + blog._id.toString());
+    }
     blog.published = true;
     blog.history = blog.history ? blog.history : [];
     blog.history.push({time: new Date(), commit: data.commit, content: data.content});

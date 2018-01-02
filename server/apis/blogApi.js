@@ -1,43 +1,41 @@
 /**
  * Created by eatong on 17-11-16.
  */
-const blogServer = require ('../services/blogServer');
-const visitLogServer = require ('../services/visitLogServer');
+const blogServer = require('../services/blogServer');
+const visitLogServer = require('../services/visitLogServer');
 
+async function writeBlog(ctx) {
+  return await blogServer.writeBlog(ctx.request.body);
+}
 
-module.exports = class BlogApi {
+async function updateBlog(ctx) {
+  return await blogServer.updateBlog(ctx.request.body);
+}
 
-  static async writeBlog(ctx) {
-    return await blogServer.writeBlog(ctx.request.body);
+async function getBlogList(ctx) {
+  return await blogServer.getBlogList();
+}
+
+async function getPublishedBlog(ctx) {
+  const published = true;
+  return await blogServer.getBlogList(published);
+}
+
+async function getBlogById(ctx) {
+  const {body} = ctx.request;
+  const readBlog = ctx.session.readBlog || {};
+  const blogHasRead = !!readBlog[body.id];
+  const userAgent = ctx.req.headers['user-agent'];
+  if (!blogHasRead) {
+    readBlog[body.id] = true;
+    ctx.session.readBlog = readBlog;
   }
+  const isSpider = /(Googlebot)|(Baiduspider)/.test(userAgent);
+  return await blogServer.getBlogById(body.id, body.operate !== 'edit' && !blogHasRead && !isSpider);
+}
 
-  static async updateBlog(ctx) {
-    return await blogServer.updateBlog(ctx.request.body);
-  }
+async function deleteBlog(ctx) {
 
-  static async getBlogList(ctx) {
-    return await blogServer.getBlogList();
-  }
+}
 
-  static async getPublishedBlog(ctx) {
-    const published = true;
-    return await blogServer.getBlogList(published);
-  }
-
-  static async getBlogById(ctx) {
-    const {body} = ctx.request;
-    const readBlog = ctx.session.readBlog || {};
-    const blogHasRead = !!readBlog[body.id];
-    const userAgent = ctx.req.headers['user-agent'];
-    if (!blogHasRead) {
-      readBlog[body.id] = true;
-      ctx.session.readBlog = readBlog;
-    }
-    const isSpider = /(Googlebot)|(Baiduspider)/.test(userAgent);
-    return await blogServer.getBlogById(body.id, body.operate !== 'edit' && !blogHasRead && !isSpider);
-  }
-
-  static async deleteBlog(ctx) {
-
-  }
-};
+module.exports = {writeBlog, updateBlog, getBlogList, getPublishedBlog, getBlogById, deleteBlog};
