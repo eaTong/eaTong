@@ -30,7 +30,7 @@ async function getBlogById(ctx) {
     readBlog[body.id] = true;
     ctx.session.readBlog = readBlog;
   }
-  const isSpider = /(Googlebot)|(Baiduspider)/.test(userAgent);
+  const isSpider = /(Googlebot)|(Baiduspider)|(360Spider)|(360JK)/.test(userAgent);
   return await blogServer.getBlogById(body.id, body.operate !== 'edit' && !blogHasRead && !isSpider);
 }
 

@@ -24,6 +24,15 @@ module.exports.getBrowserInfo = function getBrowserInfo(agent) {
   } else if (/Googlebot/.test(agent)) {
     browserName = 'Googlebot';
     fullVersion = '0';
+  }else if (/360JK/.test(agent)) {
+    browserName = '360JK';
+    fullVersion = '0';
+  }else if (/360JK/.test(agent)) {
+    browserName = '360JK';
+    fullVersion = '0';
+  }else if (/360Spider/.test(agent)) {
+    browserName = '360Spider';
+    fullVersion = '0';
   } else if (/Alibaba/.test(agent)) {
     browserName = 'Alibaba.Security';
     fullVersion = '0';
