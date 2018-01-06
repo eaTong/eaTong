@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9&#xD;&#xA;            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9&#xD;&#xA;            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   <url>
     <loc>http://www.eatong.cn/</loc>
     <lastmod>2017-12-30T13:49:49+00:00</lastmod>
@@ -44,15 +45,5 @@
     <loc>http://www.eatong.cn/log</loc>
     <lastmod>2017-12-30T13:49:49+00:00</lastmod>
     <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>http://www.eatong.cn/blog?id=5a3534b7a0871b7e2b040612</loc>
-    <lastmod>2017-12-30T13:49:49+00:00</lastmod>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://www.eatong.cn/blog/5a4aebdc02986b2419a6fd38</loc>
-    <lastmod>2018-01-02T02:35:23.347Z</lastmod>
-    <priority>0.8</priority>
   </url>
 </urlset>
