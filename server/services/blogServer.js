@@ -16,7 +16,7 @@ async function writeBlog(data) {
     blog.publishedContent = data.content;
   }
   await blog.save();
-  if(data.publish){
+  if (data.publish) {
     await insertUrlToSitemap('/blog/' + blog._id.toString());
   }
   return blog;
@@ -29,7 +29,7 @@ async function updateBlog(data) {
   blog.info = grabContent(data.content).slice(0, INFO_LENGTH);
   blog.updateTime = new Date();
   if (data.publish) {
-    if(!blog.published){
+    if (!blog.published) {
       await insertUrlToSitemap('/blog/' + blog._id.toString());
     }
     blog.published = true;
@@ -49,7 +49,7 @@ async function getBlogList(published) {
 
 async function getBlogById(id, countShouldAdd) {
   const blog = await Blog.findById(id);
-  if (countShouldAdd) {
+  if (countShouldAdd && blog) {
     blog.viewCount = blog.viewCount ? blog.viewCount + 1 : 1;
     await blog.save();
   }
