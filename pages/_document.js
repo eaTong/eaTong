@@ -2,6 +2,7 @@
  * Created by eatong on 17-11-24.
  */
 import React from 'react';
+import {Notice} from '../components'
 import Document, {Head, Main, NextScript} from 'next/document';
 import globalStyle from '../styles/global.sass'
 import wysiwyg from 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
@@ -28,7 +29,7 @@ export default class MyDocument extends Document {
             <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
             <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
             <meta name="sogou_site_verification" content="oxL8uSjZnC"/>
-            <meta name="360-site-verification" content="91411126c4c707dd73e4bb4543c3d6c0" />
+            <meta name="360-site-verification" content="91411126c4c707dd73e4bb4543c3d6c0"/>
 
             <script src="//msite.baidu.com/sdk/c.js?appid=1586633791440102"></script>
           </Head>
@@ -44,6 +45,7 @@ export default class MyDocument extends Document {
 
       </Head>
       <body>
+      <Notice/>
       <Main/>
       <NextScript/>
       </body>
