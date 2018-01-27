@@ -1,0 +1,38 @@
+.title {
+  text-align: center;
+  width: 100%;
+  line-height: 2;
+  display: inline-block;
+  font-size: 70px;
+  color: #333;
+}
+
+.content {
+  width: 100%;
+  align-items: center;
+  text-align: center;
+  padding-top: 15px;
+
+}
+
+.container {
+  text-align: center;
+}
+
+.remark {
+  font-size: 30px;
+  color: #666666;
+}
+
+ul li {
+  text-align: left;
+  list-style-type: circle;
+}
+
+.step {
+  height: 100vh;
+}
+
+.impress-on-overview .step {
+  background-color: inherit !important;
+}

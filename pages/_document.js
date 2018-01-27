@@ -45,7 +45,6 @@ export default class MyDocument extends Document {
 
       </Head>
       <body>
-      <Notice/>
       <Main/>
       <NextScript/>
       </body>
