@@ -13,6 +13,7 @@ const Footer = props => {
           <div>关于我</div>
           <div><Link href='/about'><a>关于</a></Link></div>
           <div><Link href='/log'><a>网站日志</a></Link></div>
+          <div><Link href='/demo'><a>demo演示页</a></Link></div>
           <div>
             <a href='http://www.yunzhizhuang.com'>当前工作</a>
           </div>
