@@ -21,19 +21,18 @@ class Admin extends Component {
         <Head>
           <title>admin home page...</title>
         </Head>
-        admin page....
-        <p>
-          <Link href="/admin/blog"><a>blog list</a></Link>
-        </p>
-        <p>
-          <Link href="/admin/blog/md-write"><a>write a blog with markdown</a></Link>
-        </p>
-        <p>
-          <Link href="/admin/blog/write"><a>write a blog</a></Link>
-        </p>
-        <p>
-          <Link href="/admin/analyse/visitLog"><a>visit log</a></Link>
-        </p>
+        <aside class="menu">
+          <p class="menu-label">
+            admin menu
+          </p>
+          <ul class="menu-list">
+            <li><Link href="/admin/blog"><a className="has-text-link">blog list</a></Link></li>
+            <li><Link href="/admin/blog/md-write"><a className="has-text-link">write a blog with markdown</a></Link>
+            </li>
+            <li><Link href="/admin/blog/write"><a className="has-text-link">write a blog</a></Link></li>
+            <li><Link href="/admin/analyse/visitLog"><a className="has-text-link">visit log</a></Link></li>
+          </ul>
+        </aside>
       </div>
     );
   }

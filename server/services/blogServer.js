@@ -44,7 +44,7 @@ async function updateBlog(data) {
 
 async function getBlogList(published) {
   const filter = published ? {published} : undefined;
-  return Blog.find(filter).select('title publishTime info viewCount isMarkdown').sort({publishTime: -1})
+  return Blog.find(filter).select('title publishTime info viewCount isMarkdown published').sort({publishTime: -1})
 }
 
 async function getBlogById(id, countShouldAdd) {

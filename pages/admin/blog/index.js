@@ -49,6 +49,10 @@ class Blog extends Component {
                     <button className="button  is-primary is-inverted">编辑</button>
                   </Link>
                   <button className="button is-danger is-inverted">删除</button>
+                  <p className="count has-text-right small">
+                    {blog.published && (<small className="has-text-success">已发布 {blog.viewCount}</small>)}
+                    {!blog.published && (<small className="has-text-gray">未发布</small>)}
+                  </p>
                 </div>
               </div>
             ))}
