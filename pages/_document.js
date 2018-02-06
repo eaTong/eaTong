@@ -29,7 +29,7 @@ export default class MyDocument extends Document {
             <meta name="renderer" content="webkit|ie-stand|ie-comp"/>
             <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
             <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
-            <meta name="sogou_site_verification" content="oxL8uSjZnC"/>
+            <meta name="sogou_site_verification" content="VKvEKKUc28"/>
             <meta name="360-site-verification" content="91411126c4c707dd73e4bb4543c3d6c0"/>
 
             <script src="//msite.baidu.com/sdk/c.js?appid=1586633791440102"></script>
