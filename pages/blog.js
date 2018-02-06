@@ -2,12 +2,17 @@
  * Created by eatong on 17-11-16.
  */
 import React, {Component} from 'react';
+import {findDOMNode} from 'react-dom';
 import {Page, Title, Footer} from '~components';
 import Link from 'next/link';
 import Head from 'next/head';
 import {inject, observer} from 'mobx-react'
 import ajax from '../util/ajaxUtil';
 import ReactMarkdown from 'react-markdown';
+
+import hljs from 'highlight.js/lib/highlight';
+
+hljs.registerLanguage('javascript', require('highlight.js/lib/languages/javascript'));
 
 
 @inject('blog') @observer
@@ -16,6 +21,16 @@ class Blog extends Component {
   static async init(ctx) {
     const {data} = await ajax({url: '/api/pub/blog/detail', data: {id: ctx.query.id}, ctx});
     return {blog: {blog: data}}
+  }
+
+  componentDidMount() {
+    this.initialCode();
+  }
+
+  initialCode() {
+    const contentEle = findDOMNode(this.content);
+    const ele = contentEle.querySelector('blockquote>p');
+    ele && hljs.highlightBlock(ele);
   }
 
   render() {
@@ -33,7 +48,7 @@ class Blog extends Component {
           <div className="hero">
             <div className="hero-body">
               <h1 className="title has-text-centered">{blog.blog.title}</h1>
-              <div className="content">
+              <div className="content" ref={content => this.content = content}>
                 {blog.blog.isMarkdown && (
                   <ReactMarkdown source={blog.blog.content}/>
                 )}

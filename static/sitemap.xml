@@ -1,40 +1,10 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9&#xD;&#xA;            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+ http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   <url>
     <loc>http://www.eatong.cn/</loc>
-    <lastmod>2017-12-30T13:49:49+00:00</lastmod>
+    <lastmod>2018-02-05T13:49:49+00:00</lastmod>
     <priority>1.00</priority>
-  </url>
-  <url>
-    <loc>http://www.eatong.cn/blog/5a477747d6e2983609a33acd</loc>
-    <lastmod>2017-12-30T13:49:49+00:00</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>http://www.eatong.cn/blog/5a43118c0b5dcb7a535be499</loc>
-    <lastmod>2017-12-30T13:49:49+00:00</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>http://www.eatong.cn/blog/5a3e51b30b5dcb7a535be3cb</loc>
-    <lastmod>2017-12-30T13:49:49+00:00</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>http://www.eatong.cn/blog/5a35f04da0871b7e2b040628</loc>
-    <lastmod>2017-12-30T13:49:49+00:00</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>http://www.eatong.cn/blog/5a3534b7a0871b7e2b040612</loc>
-    <lastmod>2017-12-30T13:49:49+00:00</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>http://www.eatong.cn/blog/5a3534a0a0871b7e2b040611</loc>
-    <lastmod>2017-12-30T13:49:49+00:00</lastmod>
-    <priority>0.80</priority>
   </url>
   <url>
     <loc>http://www.eatong.cn/about</loc>
@@ -43,7 +13,12 @@
   </url>
   <url>
     <loc>http://www.eatong.cn/log</loc>
-    <lastmod>2017-12-30T13:49:49+00:00</lastmod>
+    <lastmod>2018-02-05T13:49:49+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>http://www.eatong.cn/demo</loc>
+    <lastmod>2018-02-05T13:49:49+00:00</lastmod>
     <priority>0.80</priority>
   </url>
 </urlset>

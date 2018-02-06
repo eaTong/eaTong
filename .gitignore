@@ -12,5 +12,5 @@ yarn.lock
 # logs
 *.log
 static/upload
-static/sitemap.xml
+static/blog.xml
 dev

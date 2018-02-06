@@ -5,7 +5,8 @@ import React from 'react';
 import {Notice} from '../components'
 import Document, {Head, Main, NextScript} from 'next/document';
 import globalStyle from '../styles/global.sass'
-import wysiwyg from 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
+import wysiwyg from 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
+import hljs from 'highlight.js/styles/monokai-sublime.css';
 import mdStyle from '../styles/md-editor.scss';
 
 
@@ -39,6 +40,7 @@ export default class MyDocument extends Document {
             <style global dangerouslySetInnerHTML={{__html: globalStyle}}/>
             <style global dangerouslySetInnerHTML={{__html: wysiwyg}}/>
             <style global dangerouslySetInnerHTML={{__html: mdStyle}}/>
+            <style global dangerouslySetInnerHTML={{__html: hljs}}/>
           </Head>
         )}
       <Head>

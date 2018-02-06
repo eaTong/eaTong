@@ -2,7 +2,7 @@
  * Created by eatong on 17-12-12.
  */
 import React, {Component} from 'react';
-import {Page, Footer,Title} from '~components';
+import {Page, Footer, Title} from '~components';
 import Link from 'next/link';
 
 class Log extends Component {
@@ -12,7 +12,7 @@ class Log extends Component {
     return (
       <div className="hero">
         <div className="hero-head">
-            <Title>网站日志</Title>
+          <Title>网站日志</Title>
           <div className="container">
             <nav className="breadcrumb">
               <ul className="column">
@@ -70,6 +70,14 @@ class Log extends Component {
                 <div className="timeline-content">
                   <p className="heading">2018-01-02</p>
                   <p>发布博客的时候自动更新sitemap。</p>
+                </div>
+              </div>
+              <div className="timeline-item">
+                <div className="timeline-marker"/>
+                <div className="timeline-content">
+                  <p className="heading">2018-02-06</p>
+                  <p>分离 <code>blog.xml</code>和<code>sitemap.xml</code>，站点做站点的sitemap，blog控制blog的sitemap</p>
+                  <p>利用<code>highlight</code>将代码高亮显示，优化代码展示方式。</p>
                 </div>
               </div>
 

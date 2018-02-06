@@ -9,7 +9,7 @@ const {parseString} = require('../framework/xmlUtil');
 
 
 async function insertUrlToSitemap(url, priority) {
-  const xmlPath = path.resolve(__dirname, '../../static/sitemap.xml');
+  const xmlPath = path.resolve(__dirname, '../../static/blog.xml');
   const builder = new Builder();
   const file = await  fs.readFile(xmlPath, 'utf-8');
   const sitemap = await parseString(file);
