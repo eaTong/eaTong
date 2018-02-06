@@ -42,6 +42,10 @@ nextApp.prepare().then(() => {
     maxAge: 365 * 24 * 60 * 60,
     gzip: true
   });
+  app.use(serve('assets'), {
+    maxAge: 365 * 24 * 60 * 60,
+    gzip: true
+  });
   app.use(staticCache(path.join(__dirname, 'static'), {
     maxAge: 365 * 24 * 60 * 60
   }));
@@ -90,6 +94,9 @@ nextApp.prepare().then(() => {
     }
   });
 
+  router.get('/sogousiteverification.txt', async (ctx, next) => {
+    ctx.response.attachment('../sogousiteverification.txt')
+  })
   const handler = routes.getRequestHandler(nextApp);
   app.use(ctx => {
     ctx.respond = false;
