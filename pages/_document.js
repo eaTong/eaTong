@@ -49,6 +49,11 @@ export default class MyDocument extends Document {
       <body>
       <Main/>
       <NextScript/>
+      <script>(function(){
+        var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?b6928353639f88120f6182b30ced934f":"https://jspassport.ssl.qhimg.com/11.0.1.js?b6928353639f88120f6182b30ced934f";
+        document.write('<script src="' + src + '" id="sozz"><\/script>');
+      })();
+      </script>
       </body>
       </html>
     );
