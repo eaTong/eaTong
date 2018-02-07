@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>eaTong-demo:m-preview-image</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+  <meta name="renderer" content="webkit">
+  <link rel="stylesheet" href="preview-image.css">
+</head>
+<body>
+<button onclick="preview()">preview</button>
+<p>请使用移动调试模式来观看此demo</p>
+<p>use mobild debug mode to see this demo.</p>
+<script src="previewImage.min.js"></script>
+<script>
+  var urls = [
+    {
+      url: 'http://icon.nipic.com/BannerPic/20150821/home/20150821102514.jpg',
+      optionalRender: function (index, total) {
+        return index + '~~~~~' + total
+      }
+    }, {
+      url: 'http://image.tupian114.com/20140722/20441639.jpg',
+      optionalRender: '第{index}张，共{total}张'
+    }, {
+      url: 'http://image.tupian114.com/20131219/11432580.jpg',
+      optionalRender: '33333333'
+    }, {
+      url: 'http://image.tupian114.com/20150831/23135049.jpg',
+      optionalRender: '44444444'
+    }, {
+      url: 'http://image.tupian114.com/20100710/23030647.jpg',
+      optionalRender: '5555555'
+    }, {
+      url: 'http://image.tupian114.com/20140923/16420259.jpg',
+      optionalRender: '66666666'
+    }, {
+      url: 'http://image.tupian114.com/20140923/16510218.jpg',
+      optionalRender: '7777777'
+    }
+  ];
+  previewImage({urls: urls, index: 0});
+
+  function preview() {
+    previewImage({urls: urls, index: 0});
+  }
+</script>
+</body>
+</html>
