@@ -9,7 +9,13 @@ import wysiwyg from 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import hljs from 'highlight.js/styles/monokai-sublime.css';
 import mdStyle from '../styles/md-editor.scss';
 
-
+const bdTj = `var _hmt = _hmt || [];
+              (function() {
+              var hm = document.createElement("script");
+              hm.src = "https://hm.baidu.com/hm.js?c4b070128c0aa2863fa47ac186b9ca97";
+              var s = document.getElementsByTagName("script")[0];
+              s.parentNode.insertBefore(hm, s);
+            })();`;
 export default class MyDocument extends Document {
   render() {
     return (
@@ -32,7 +38,10 @@ export default class MyDocument extends Document {
             <meta name="sogou_site_verification" content="VKvEKKUc28"/>
             <meta name="360-site-verification" content="91411126c4c707dd73e4bb4543c3d6c0"/>
 
-            <script src="//msite.baidu.com/sdk/c.js?appid=1586633791440102"></script>
+            <script src="http://msite.baidu.com/sdk/c.js?appid=1586633791440102"></script>
+
+            <script dangerouslySetInnerHTML={{__html: bdTj}}/>
+
           </Head>
         ) : (
           <Head>
