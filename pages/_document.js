@@ -10,12 +10,12 @@ import hljs from 'highlight.js/styles/monokai-sublime.css';
 import mdStyle from '../styles/md-editor.scss';
 
 const bdTj = `var _hmt = _hmt || [];
-              (function() {
-              var hm = document.createElement("script");
-              hm.src = "https://hm.baidu.com/hm.js?c4b070128c0aa2863fa47ac186b9ca97";
-              var s = document.getElementsByTagName("script")[0];
-              s.parentNode.insertBefore(hm, s);
-            })();`;
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?b69c768893587a42c887e5f422ad8ad6";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();`;
 export default class MyDocument extends Document {
   render() {
     return (
