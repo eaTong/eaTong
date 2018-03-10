@@ -2,7 +2,7 @@
  * Created by eatong on 17-11-16.
  */
 const Blog = require('../schema/BlogSchema');
-const {grabContent} = require('../framework/util');
+const {grabContent, getKeywords} = require('../framework/util');
 const {insertUrlToSitemap} = require('./sitemapServer');
 
 const INFO_LENGTH = 200;
@@ -14,6 +14,7 @@ async function writeBlog(data) {
     blog.publishTime = new Date();
     blog.published = true;
     blog.publishedContent = data.content;
+    blog.keywords = getKeywords(blog.content);
   }
   await blog.save();
   if (data.publish) {
@@ -37,6 +38,7 @@ async function updateBlog(data) {
     blog.history.push({time: new Date(), commit: data.commit, content: data.content});
     blog.publishedContent = data.content;
     blog.publishTime = new Date();
+    blog.keywords = getKeywords(blog.content);
   }
   await blog.save();
   return blog;
@@ -44,7 +46,7 @@ async function updateBlog(data) {
 
 async function getBlogList(published) {
   const filter = published ? {published} : undefined;
-  return Blog.find(filter).select('title publishTime info viewCount isMarkdown published').sort({publishTime: -1})
+  return Blog.find(filter).select('title publishTime info viewCount isMarkdown published keywords').sort({publishTime: -1})
 }
 
 async function getBlogById(id, countShouldAdd) {

@@ -1,7 +1,7 @@
 /**
  * Created by eatong on 17-11-16.
  */
-const {mongoose, Schema} = require ('../mongoConfig');
+const {mongoose, Schema} = require('../mongoConfig');
 
 const BlogSchema = new Schema({
   title: String,
@@ -11,8 +11,9 @@ const BlogSchema = new Schema({
   viewCount: Number,
   publishTime: Date,
   history: Array,
+  keywords: Array,
   published: Boolean,
   isMarkdown: Boolean,
 });
 
-module.exports =mongoose.model('blog', BlogSchema);
+module.exports = mongoose.model('blog', BlogSchema);

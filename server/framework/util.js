@@ -3,6 +3,7 @@
  */
 
 const axios = require('axios');
+const nodejieba = require("nodejieba");
 
 module.exports.grabContent = function grabContent(str) {
   const htmlReg = new RegExp('\<[^>]*\>\s*', 'g');
@@ -93,4 +94,30 @@ module.exports.getBrowserInfo = function getBrowserInfo(agent) {
  */
 module.exports.getIpInfo = async function getIpInfo(ip) {
   return await  axios.get(`http://ip.taobao.com/service/getIpInfo.php?ip=${ip}`);
+};
+/**
+ * 获取文本中的关键字
+ * @param str
+ * @param count
+ * @returns {any[]}
+ */
+module.exports.getKeywords = function getKeywords(str, count) {
+  const arr = nodejieba.tag(str);
+  const keyWordsType = ['eng', 'n', 'l', 'a', 'i', 'nr'];
+  const dic = {};
+  for (let item of arr) {
+    if (keyWordsType.indexOf(item.tag) !== -1) {
+
+      if (dic[item.word]) {
+        dic[item.word].count = dic[item.word].count + 1;
+      } else {
+        dic[item.word] = {count: 1, tag: item.tag};
+      }
+    }
+  }
+  const keyWords = [];
+  for (let key in dic) {
+    keyWords.push({name: key, count: dic[key].count})
+  }
+  return keyWords.sort((a, b) => b.count - a.count).slice(0, count || 5).map(item => item.name);
 };

@@ -4151,6 +4151,10 @@ nan@^2.3.0, nan@^2.3.2:
   version "2.8.0"
   resolved "http://registry.npm.taobao.org/nan/download/nan-2.8.0.tgz#ed715f3fe9de02b57a5e6252d90a96675e1f085a"
 
+nan@~2.3.0:
+  version "2.3.5"
+  resolved "https://registry.yarnpkg.com/nan/-/nan-2.3.5.tgz#822a0dc266290ce4cd3a12282ca3e7e364668a08"
+
 ncp@~2.0.0:
   version "2.0.0"
   resolved "http://registry.npm.taobao.org/ncp/download/ncp-2.0.0.tgz#195a21d6c46e361d2fb1281ba38b91e9df7bdbb3"
@@ -4329,6 +4333,12 @@ node-sass@^4.5.3:
 node-uuid@~1.4.7:
   version "1.4.8"
   resolved "http://registry.npm.taobao.org/node-uuid/download/node-uuid-1.4.8.tgz#b040eb0923968afabf8d32fb1f17f1167fdab907"
+
+nodejieba@^2.2.5:
+  version "2.2.5"
+  resolved "https://registry.yarnpkg.com/nodejieba/-/nodejieba-2.2.5.tgz#821441a683fad25ebd2c8dde1401dd43dbeb027a"
+  dependencies:
+    nan "~2.3.0"
 
 "nopt@2 || 3", nopt@~3.0.1:
   version "3.0.6"
