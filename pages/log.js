@@ -81,16 +81,17 @@ class Log extends Component {
                 </div>
               </div>
 
+              <div className="timeline-item">
+                <div className="timeline-marker"/>
+                <div className="timeline-content">
+                  <p>利用 <code>nodejieba</code>自动分词 ，写完日志后根据日志的词出现频次自动分析关键词。</p>
+                </div>
+              </div>
+
               <div className="timeline-header">
                 <span className="tag is-medium is-primary">Next</span>
               </div>
 
-              <div className="timeline-item">
-                <div className="timeline-marker"/>
-                <div className="timeline-content">
-                  <p>增加自动分词 ，写完日志后根据日志的词出现频次自动分析关键词。</p>
-                </div>
-              </div>
               <div className="timeline-item">
                 <div className="timeline-marker"/>
                 <div className="timeline-content">
