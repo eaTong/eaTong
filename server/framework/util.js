@@ -5,8 +5,10 @@
 const axios = require('axios');
 
 module.exports.grabContent = function grabContent(str) {
-  const reg = new RegExp('\<[^>]*\>\s*', 'g');
-  return str.replace(reg, '').replace(/\n/g, '');
+  const htmlReg = new RegExp('\<[^>]*\>\s*', 'g');
+  const markdownReg = new RegExp(/(#{1,})|(\*{1,})|(`)/, 'g');
+
+  return str.replace(htmlReg, '').replace(markdownReg, '').replace(/\n/g, '');
 };
 
 /**
@@ -24,13 +26,13 @@ module.exports.getBrowserInfo = function getBrowserInfo(agent) {
   } else if (/Googlebot/.test(agent)) {
     browserName = 'Googlebot';
     fullVersion = '0';
-  }else if (/360JK/.test(agent)) {
+  } else if (/360JK/.test(agent)) {
     browserName = '360JK';
     fullVersion = '0';
-  }else if (/360JK/.test(agent)) {
+  } else if (/360JK/.test(agent)) {
     browserName = '360JK';
     fullVersion = '0';
-  }else if (/360Spider/.test(agent)) {
+  } else if (/360Spider/.test(agent)) {
     browserName = '360Spider';
     fullVersion = '0';
   } else if (/Alibaba/.test(agent)) {
