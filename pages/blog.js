@@ -38,6 +38,12 @@ class Blog extends Component {
     return (
       <div>
         <div className="container">
+
+          <Head>
+
+            <meta name="keywords" content={(blog.blog.keywords || []).join(',')}/>
+            <meta name="description" content={blog.blog.info}/>
+          </Head>
           <Title>{blog.blog.title}</Title>
           <nav className="breadcrumb">
             <ul className="column">

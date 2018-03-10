@@ -31,7 +31,6 @@ export default class MyDocument extends Document {
             />
             <link rel="shortcut icon" href="/static/favicon.ico"/>
             <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-            <meta name="description" content="eaTong个人站; personal website for eaTong"/>
             <meta name="renderer" content="webkit|ie-stand|ie-comp"/>
             <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
             <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
