@@ -34,8 +34,6 @@ async function updateBlog(data) {
       await insertUrlToSitemap('/blog/' + blog._id.toString());
     }
     blog.published = true;
-    blog.history = blog.history ? blog.history : [];
-    blog.history.push({time: new Date(), commit: data.commit, content: data.content});
     blog.publishedContent = data.content;
     blog.publishTime = new Date();
     blog.keywords = getKeywords(blog.content);

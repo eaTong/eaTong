@@ -10,7 +10,6 @@ const BlogSchema = new Schema({
   info: String,
   viewCount: Number,
   publishTime: Date,
-  history: Array,
   keywords: Array,
   published: Boolean,
   isMarkdown: Boolean,
