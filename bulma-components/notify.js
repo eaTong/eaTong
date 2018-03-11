@@ -65,7 +65,8 @@ const notify = (() => {
   function addNotify(opts, type) {
     initialContainer();
     type = type ? type : 'info';
-    notifies.push({type, ...opts, closeable: opts.closeable !== false, key: uuid()});
+    const option = typeof opts === 'string' ? {content: opts} : opts;
+    notifies.push({type, ...option, closeable: opts.closeable !== false, key: uuid()});
     renderNotifies();
   }
 

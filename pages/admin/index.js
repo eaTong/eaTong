@@ -21,11 +21,11 @@ class Admin extends Component {
         <Head>
           <title>admin home page...</title>
         </Head>
-        <aside class="menu">
-          <p class="menu-label">
+        <aside className="menu">
+          <p className="menu-label">
             admin menu
           </p>
-          <ul class="menu-list">
+          <ul className="menu-list">
             <li><Link href="/admin/blog"><a className="has-text-link">blog list</a></Link></li>
             <li><Link href="/admin/blog/md-write"><a className="has-text-link">write a blog with markdown</a></Link>
             </li>

@@ -12,6 +12,10 @@ async function updateBlog(ctx) {
   return await blogServer.updateBlog(ctx.request.body);
 }
 
+async function addComment(ctx) {
+  return await blogServer.addComment(ctx.request.body);
+}
+
 async function getBlogList(ctx) {
   return await blogServer.getBlogList();
 }
@@ -34,8 +38,5 @@ async function getBlogById(ctx) {
   return await blogServer.getBlogById(body.id, body.operate !== 'edit' && !blogHasRead && !isSpider);
 }
 
-async function deleteBlog(ctx) {
 
-}
-
-module.exports = {writeBlog, updateBlog, getBlogList, getPublishedBlog, getBlogById, deleteBlog};
+module.exports = {writeBlog, updateBlog, getBlogList, getPublishedBlog, getBlogById, addComment};

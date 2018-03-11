@@ -13,6 +13,7 @@ const BlogSchema = new Schema({
   keywords: Array,
   published: Boolean,
   isMarkdown: Boolean,
+  comments: [{type: Schema.Types.ObjectId, ref: 'comment'}]
 });
 
 module.exports = mongoose.model('blog', BlogSchema);

@@ -16,6 +16,7 @@
           "styles": "./styles",
           "~util": "./util",
           "~components": "./components",
+          "~bulma-components": "./bulma-components",
           "~server": "./server"
         },
         "cwd": "babelrc"

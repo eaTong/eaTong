@@ -50,6 +50,7 @@ router.post('/api/blog/update', checkArguments(['id', 'title', 'content']), Blog
 router.post('/api/blog/list', BlogApi.getBlogList);
 router.post('/api/pub/published-blog', BlogApi.getPublishedBlog);
 router.post('/api/pub/blog/detail', BlogApi.getBlogById);
+router.post('/api/pub/blog/comment', checkArguments(['content', 'blog']), BlogApi.addComment);
 
 router.post('/api/visit-log/list', VisitLogApi.getVisitLogs);
 
