@@ -25,7 +25,8 @@ Date.prototype.format = function (format) {
   return format;
 };
 Date.prototype.getTimeStr = function () {
-  const days = Math.round((new Date().getTime() - this.getTime()) / (1000 * 60 * 60 * 24));
+  const now = new Date();
+  const days = Math.round((now.getTime() - this.getTime()) / (1000 * 60 * 60 * 24));
   if (days < 1) {
     return this.format('hh:mm');
   } else if (days === 1) {
@@ -33,10 +34,10 @@ Date.prototype.getTimeStr = function () {
   } else if (days === 2) {
     return `前天 ${this.format('hh:mm')}`
   } else {
-    if (days.year() === now.year()) {
-      return this.format('MM-DD hh:mm')
+    if (now.getFullYear() === this.getFullYear()) {
+      return this.format('MM-dd hh:mm')
     } else {
-      return this.format('YYYY-MM-DD hh:mm')
+      return this.format('YYYY-MM-dd hh:mm')
     }
   }
 }
