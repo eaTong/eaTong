@@ -35,7 +35,7 @@ class Index extends React.Component {
                 <div className="media-right">
                   {new Date(item.publishTime).format()}
                   <p className="content has-text-grey">
-                    {`${item.comments ? item.comments.length : 0}/${item.viewCount}`}
+                    {item.comments ? `${item.comments.length}/${item.viewCount}` : 0}
                   </p>
                 </div>
               </div>
