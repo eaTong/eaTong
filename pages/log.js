@@ -95,6 +95,13 @@ class Log extends Component {
                   <p>增加评论系统，收集文章评论。</p>
                 </div>
               </div>
+              <div className="timeline-item">
+                <div className="timeline-marker"/>
+                <div className="timeline-content">
+                  <p className="heading">2018-03-16</p>
+                  <p>开启HTPPS，当然，证书是免费的</p>
+                </div>
+              </div>
 
               <div className="timeline-header">
                 <span className="tag is-medium is-primary">Next</span>
