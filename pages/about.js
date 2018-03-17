@@ -84,7 +84,7 @@ class AboutMe extends Component {
               </li>
               <li>
                 基于<a href="https://github.com/eaTong/next-mobx-starter">next-mobx-starter</a>脚手架的个人博客系统
-                <a href="http://eatong.cn">eaTong</a>
+                <a href="https://eatong.cn">eaTong</a>
               </li>
               <li>
                 基于<a href="https://github.com/eaTong/next-mobx-starter">next-mobx-starter</a>脚手架的文档平台

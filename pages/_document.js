@@ -37,7 +37,7 @@ export default class MyDocument extends Document {
             <meta name="sogou_site_verification" content="VKvEKKUc28"/>
             <meta name="360-site-verification" content="91411126c4c707dd73e4bb4543c3d6c0"/>
 
-            <script src="http://msite.baidu.com/sdk/c.js?appid=1586633791440102"></script>
+            <script src="https://msite.baidu.com/sdk/c.js?appid=1586633791440102"></script>
 
             <script dangerouslySetInnerHTML={{__html: bdTj}}/>
 
