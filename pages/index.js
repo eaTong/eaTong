@@ -25,7 +25,7 @@ class Index extends React.Component {
               <div className="media" key={item._id}>
                 <div className="media-content">
                   <Link route='blog' params={{id: item._id}}>
-                    <a><h2 className="content">{item.title}</h2></a>
+                    <a><h2 className="content blog-title">{item.title}</h2></a>
                   </Link>
                   <p className="content tags">
                     {(item.keywords || []).map(keyword => <span className="tag" key={keyword}>{keyword}</span>)}
