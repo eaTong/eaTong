@@ -37,9 +37,9 @@ router.post('/api/*', async (ctx, next) => {
   }
 });
 
-router.post('/api/todo/get', TodoApi.getTodo);
-router.post('/api/todo/add', TodoApi.addTodo);
-router.post('/api/todo/toggle', TodoApi.toggleTodo);
+router.post('/api/pub/todo/get', TodoApi.getTodo);
+router.post('/api/pub/todo/add', TodoApi.addTodo);
+router.post('/api/pub/todo/toggle', TodoApi.toggleTodo);
 
 router.post('/api/user/login', checkArguments(['account', 'password']), UserApi.login);
 
