@@ -34,6 +34,8 @@ const Footer = props => {
       <div className="columns">
         <div className="column has-text-centered">
           <span>eaTong个人站</span>
+
+          <img src="https://www.codewars.com/users/eaTong/badges/micro" alt="" style={{marginTop: 3}}/>
           <a href="http://www.miitbeian.gov.cn">滇ICP备 17010764</a>
         </div>
       </div>

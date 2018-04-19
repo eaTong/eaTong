@@ -1,5 +1,6 @@
 const Router = require('koa-router');
 const TodoApi = require('./apis/todoApi');
+const FormApi = require('./apis/formApi');
 const UserApi = require('./apis/userApi');
 const FileApi = require('./apis/fileApi');
 const BlogApi = require('./apis/blogApi');
@@ -40,6 +41,12 @@ router.post('/api/*', async (ctx, next) => {
 router.post('/api/pub/todo/get', TodoApi.getTodo);
 router.post('/api/pub/todo/add', TodoApi.addTodo);
 router.post('/api/pub/todo/toggle', TodoApi.toggleTodo);
+
+router.post('/api/pub/form/list', FormApi.getFormList);
+router.post('/api/pub/form/add', FormApi.addForm);
+router.post('/api/pub/form/update', FormApi.updateForm);
+router.post('/api/pub/form/delete', FormApi.deleteForm);
+router.post('/api/pub/form/detail', FormApi.getFormById);
 
 router.post('/api/user/login', checkArguments(['account', 'password']), UserApi.login);
 
