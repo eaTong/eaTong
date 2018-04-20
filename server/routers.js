@@ -43,10 +43,10 @@ router.post('/api/pub/todo/add', TodoApi.addTodo);
 router.post('/api/pub/todo/toggle', TodoApi.toggleTodo);
 
 router.post('/api/pub/form/list', FormApi.getFormList);
-router.post('/api/pub/form/add', FormApi.addForm);
-router.post('/api/pub/form/update', FormApi.updateForm);
-router.post('/api/pub/form/delete', FormApi.deleteForm);
-router.post('/api/pub/form/detail', FormApi.getFormById);
+router.post('/api/pub/form/add', checkArguments('text', 'int'), FormApi.addForm);
+router.post('/api/pub/form/update', checkArguments(['id', 'text', 'int']), FormApi.updateForm);
+router.post('/api/pub/form/delete', checkArguments(['id']), FormApi.deleteForm);
+router.post('/api/pub/form/detail', checkArguments(['id']), FormApi.getFormById);
 
 router.post('/api/user/login', checkArguments(['account', 'password']), UserApi.login);
 

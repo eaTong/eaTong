@@ -27,7 +27,7 @@ async function deleteForm(id) {
 }
 
 async function getFormById(id) {
-  return await Form.findById(id).populate('comments');
+  return await Form.findById(id);
 }
 
 module.exports = {writeForm, getFormList, getFormById, updateForm, deleteForm};
