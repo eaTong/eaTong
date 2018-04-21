@@ -42,7 +42,7 @@ router.post('/api/pub/todo/get', TodoApi.getTodo);
 router.post('/api/pub/todo/add', TodoApi.addTodo);
 router.post('/api/pub/todo/toggle', TodoApi.toggleTodo);
 
-router.post('/api/pub/form/list', FormApi.getFormList);
+router.post('/api/pub/form/get', FormApi.getFormList);
 router.post('/api/pub/form/add', checkArguments('text', 'int'), FormApi.addForm);
 router.post('/api/pub/form/update', checkArguments(['id', 'text', 'int']), FormApi.updateForm);
 router.post('/api/pub/form/delete', checkArguments(['id']), FormApi.deleteForm);
