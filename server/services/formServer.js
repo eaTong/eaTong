@@ -23,7 +23,7 @@ async function getFormList() {
 }
 
 async function deleteForm(id) {
-  await Form.removeById(id);
+  await Form.deleteOne({_id: id});
 }
 
 async function getFormById(id) {
