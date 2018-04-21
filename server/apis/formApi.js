@@ -12,7 +12,7 @@ async function updateForm(ctx) {
 }
 
 async function deleteForm(ctx) {
-  return await formServer.deleteForm(ctx.request.body);
+  return await formServer.deleteForm(ctx.request.body.id);
 }
 
 async function getFormList(ctx) {
