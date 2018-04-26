@@ -4,6 +4,7 @@ const FormApi = require('./apis/formApi');
 const UserApi = require('./apis/userApi');
 const FileApi = require('./apis/fileApi');
 const BlogApi = require('./apis/blogApi');
+const WeChatApi = require('./apis/weChatApi');
 const VisitLogApi = require('./apis/visitLogApi');
 const {checkArguments} = require('./framework/middleWare');
 const {ArgMissError, LogicError} = require('./framework/errors');
@@ -38,6 +39,9 @@ router.post('/api/*', async (ctx, next) => {
   }
 });
 
+router.post('/api/pub/wechat/auth', WeChatApi.auth);
+router.get('/api/pub/wechat/auth', WeChatApi.auth);
+
 router.post('/api/pub/todo/get', TodoApi.getTodo);
 router.post('/api/pub/todo/add', TodoApi.addTodo);
 router.post('/api/pub/todo/toggle', TodoApi.toggleTodo);
@@ -60,6 +64,7 @@ router.post('/api/pub/blog/detail', BlogApi.getBlogById);
 router.post('/api/pub/blog/comment', checkArguments(['content', 'blog']), BlogApi.addComment);
 
 router.post('/api/visit-log/list', VisitLogApi.getVisitLogs);
+
 
 router.post('/api/*', async ctx => {
   ctx.status = 404;

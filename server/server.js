@@ -94,9 +94,6 @@ nextApp.prepare().then(() => {
     }
   });
 
-  router.get('/sogousiteverification.txt', async (ctx, next) => {
-    ctx.response.attachment('../sogousiteverification.txt')
-  })
   const handler = routes.getRequestHandler(nextApp);
   app.use(ctx => {
     ctx.respond = false;

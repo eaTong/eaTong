@@ -40,6 +40,7 @@
     "react-draft-wysiwyg": "^1.10.12",
     "react-markdown": "^3.1.1",
     "react-transition-group": "^2.2.1",
+    "sha1": "^1.1.1",
     "uuid": "^3.1.0",
     "winston": "^3.0.0-rc1",
     "xml2js": "^0.4.19"
