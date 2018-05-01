@@ -16,8 +16,7 @@ async function auth(ctx) {
   const echostr = body.echostr;
   const str = [token, timestamp, nonce].sort().join(''); //按字典排序，拼接字符串
   const sha = sha1(str); //加密
-  ctx.body = (sha === signature) ? 'success' : 'failed';
-  console.log(ctx.body);
+  ctx.body = (sha === signature) ? echostr : 'failed';
   ctx.res.statusCode = 200;
 
 }
