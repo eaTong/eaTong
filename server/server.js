@@ -36,7 +36,7 @@ nextApp.prepare().then(() => {
   const app = new Koa();
 //use compression
   app.use(koaConnect(compression()));
-  // app.use(koaLogger());
+  app.use(koaLogger());
   app.use(cookie());
   app.use(serve('.next/static'), {
     maxAge: 365 * 24 * 60 * 60,
