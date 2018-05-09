@@ -39,6 +39,15 @@ router.post('/api/*', async (ctx, next) => {
   }
 });
 
+router.post('/api/pub/*', async (ctx, next) => {
+  ctx.header[`Access-Control-Allow-Origin`] = '*';
+  ctx.header[`Access-Control-Allow-Methods`] = 'POST';
+
+  ctx.set(`Access-Control-Allow-Origin`, '*');
+  ctx.set(`Access-Control-Allow-Methods`, 'POST');
+  return await next();
+});
+
 router.post('/api/pub/wechat/auth', WeChatApi.auth);
 router.get('/api/pub/wechat/auth', WeChatApi.auth);
 
