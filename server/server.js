@@ -1,4 +1,5 @@
 const path = require('path');
+const {createReadStream} = require('fs');
 const next = require('next');
 const {useStaticRendering} = require('mobx-react');
 const Koa = require('koa');
@@ -43,6 +44,10 @@ nextApp.prepare().then(() => {
     gzip: true
   });
   app.use(serve('assets'), {
+    maxAge: 365 * 24 * 60 * 60,
+    gzip: true
+  });
+  app.use(serve('dist'), {
     maxAge: 365 * 24 * 60 * 60,
     gzip: true
   });
@@ -92,6 +97,11 @@ nextApp.prepare().then(() => {
     } else {
       await next();
     }
+  });
+
+  router.get('/admin/sundry' , async (ctx)=>{
+    ctx.type = 'html';
+    ctx.body = createReadStream('dist/index.html');
   });
 
   const handler = routes.getRequestHandler(nextApp);
