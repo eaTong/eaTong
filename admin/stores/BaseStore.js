@@ -24,10 +24,12 @@ export default class BaseStore {
   keyMap = {};
 
   @computed get selectedRows() {
-    return this.selectedKeys.map(key => this.keyMap[key + '']);
+    console.log(this.selectedKeys.map(key => this.keyMap[key]));
+    return this.selectedKeys.map(key => this.keyMap[key]);
   }
 
   @computed get firstSelected() {
+    console.log(toJS(this.selectedRows[0]));
     return toJS(this.selectedRows[0]);
   }
 
@@ -63,6 +65,7 @@ export default class BaseStore {
   }
 
   @action onChangeSelection(selectedKeys) {
+    console.log(selectedKeys);
     this.selectedKeys = [...selectedKeys];
   }
 
@@ -89,12 +92,12 @@ export default class BaseStore {
   }
 
   getKey(data) {
-    return data.id;
+    return data._id;
   }
 
   mappingData(list) {
     for (let item of list) {
-      this.keyMap[this.getKey(item) + ''] = item;
+      this.keyMap[this.getKey(item)] = item;
     }
   }
 
@@ -108,6 +111,7 @@ export default class BaseStore {
         await this.getDataList();
       }
     } else {
+      console.log(this.firstSelected);
       const {success} = await ajax({url: this.updateApi, data: {id: this.getKey(this.firstSelected), ...formData}});
       if (success) {
         message.success('编辑成功');

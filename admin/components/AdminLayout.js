@@ -7,16 +7,11 @@ import ajax from '../util/ajaxUtil';
 
 const {Content, Sider} = Layout;
 const menus = [
+  {icon: '', path: '/admin/test', name: 'test'},
 //UPDATE_TAG:addMenu
 ];
 
 class AdminLayout extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      menus: []
-    };
-  }
 
   onSelectMenu({key}) {
     window.localStorage.setItem('lastUrl', key);
@@ -29,7 +24,7 @@ class AdminLayout extends Component {
   }
 
   renderMenus() {
-    return this.state.menus.map(menu => (
+    return menus.map(menu => (
       <Menu.Item key={menu.path}>
         <Icon type={menu.icon}/>
         <span>{menu.name}</span>

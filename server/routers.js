@@ -9,6 +9,7 @@ const FileApi = require('./apis/fileApi');
 const BlogApi = require('./apis/blogApi');
 const WeChatApi = require('./apis/weChatApi');
 const VisitLogApi = require('./apis/visitLogApi');
+const TestApi = require('./apis/TestApi');
 //UPDATE_TAG:importApi
 
 const router = new Router();
@@ -72,6 +73,12 @@ router.post('/api/blog/list', BlogApi.getBlogList);
 router.post('/api/pub/published-blog', BlogApi.getPublishedBlog);
 router.post('/api/pub/blog/detail', BlogApi.getBlogById);
 router.post('/api/pub/blog/comment', checkArguments(['content', 'blog']), BlogApi.addComment);
+
+router.post('/api/test/add',checkArguments(['name']), TestApi.addTest);
+router.post('/api/test/get', TestApi.getTestList);
+router.post('/api/test/update', checkArguments(['id', 'name']), TestApi.updateTest);
+router.post('/api/test/delete',  checkArguments(['ids']), TestApi.deleteTests);  
+router.post('/api/test/detail',  checkArguments(['id']), TestApi.getTestById); 
 //UPDATE_TAG:defineRouter
 
 router.post('/api/visit-log/list', VisitLogApi.getVisitLogs);

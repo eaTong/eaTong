@@ -35,37 +35,37 @@ const ${upperFirstLetter(form)}Schema = new Schema({
   enable: Boolean,
 });
 
-module.exports = mongoose.model('blog', BlogSchema);
+module.exports = mongoose.model('${form}', ${upperFirstLetter(form)}Schema);
 `;
 }
 
 function getApi(form) {
   return `
 const {LogicError} = require("../framework/errors");
-const ${upperFirstLetter(form)}Service = require('../services/${upperFirstLetter(form)}Service');
+const {add${upperFirstLetter(form)} , update${upperFirstLetter(form)} , delete${upperFirstLetter(form)}s , get${upperFirstLetter(form)}List , get${upperFirstLetter(form)}ById} = require('../services/${upperFirstLetter(form)}Service');
 const BaseApi = require('../framework/BaseApi');
 
 
 class ${upperFirstLetter(form)}Api extends BaseApi {
   static async add${upperFirstLetter(form)}(ctx) {
-    return await ${upperFirstLetter(form)}Service.add${upperFirstLetter(form)}(ctx.request.body);
+    return await add${upperFirstLetter(form)}(ctx.request.body);
   }
 
-  static async update${upperFirstLetter(form)}s(ctx) {
-    return await ${upperFirstLetter(form)}Service.update${upperFirstLetter(form)}s(ctx.request.body);
+  static async update${upperFirstLetter(form)}(ctx) {
+    return await update${upperFirstLetter(form)}(ctx.request.body);
   }
 
   static async delete${upperFirstLetter(form)}s(ctx) {
-    return await ${upperFirstLetter(form)}Service.delete${upperFirstLetter(form)}s(ctx.request.body.ids);
+    return await delete${upperFirstLetter(form)}s(ctx.request.body.ids);
   }
 
-  static async get${upperFirstLetter(form)}s(ctx) {
+  static async get${upperFirstLetter(form)}List(ctx) {
     const {pageIndex = 0, pageSize = 20} = ctx.request.body;
-    return await ${upperFirstLetter(form)}Service.get${upperFirstLetter(form)}s(pageIndex, pageSize);
+    return await get${upperFirstLetter(form)}List(pageIndex, pageSize);
   }
 
-  static async get${upperFirstLetter(form)}Detail(ctx) {
-    return await ${upperFirstLetter(form)}Service.get${upperFirstLetter(form)}Detail(ctx.request.body);
+  static async get${upperFirstLetter(form)}ById(ctx) {
+    return await get${upperFirstLetter(form)}ById(ctx.request.body);
   }
 
 }
@@ -76,35 +76,34 @@ module.exports = ${upperFirstLetter(form)}Api;
 
 function getService(form) {
   return `
-const Form = require('../schema/FormSchema');
 const ${upperFirstLetter(form)} = require('../schema/${upperFirstLetter(form)}Schema');
 
-async function write${upperFirstLetter}(data) {
-  const ${form} = new ${upperFirstLetter}(data);
+async function add${upperFirstLetter(form)}(data) {
+  const ${form} = new ${upperFirstLetter(form)}(data);
   await ${form}.save();
   return ${form};
 }
 
-async function update${upperFirstLetter}(data) {
-  const ${form} = await ${upperFirstLetter}.findById(data.id);
+async function update${upperFirstLetter(form)}(data) {
+  const ${form} = await ${upperFirstLetter(form)}.findById(data.id);
   Object.assign(${form}, data);
   await ${form}.save();
   return ${form};
 }
 
-async function get${upperFirstLetter}List() {
-  return ${upperFirstLetter}.find()
+async function get${upperFirstLetter(form)}List() {
+  return ${upperFirstLetter(form)}.find()
 }
 
-async function delete${upperFirstLetter}(id) {
-  await ${upperFirstLetter}.findById(id).remove();
+async function delete${upperFirstLetter(form)}(id) {
+  await ${upperFirstLetter(form)}.findById(id).remove();
 }
 
-async function get${upperFirstLetter}ById(id) {
-  return await ${upperFirstLetter}.findById(id);
+async function get${upperFirstLetter(form)}ById(id) {
+  return await ${upperFirstLetter(form)}.findById(id);
 }
 
-module.exports = {add${upperFirstLetter}, get${upperFirstLetter}List, get${upperFirstLetter}ById, update${upperFirstLetter}, delete${upperFirstLetter}};
+module.exports = {add${upperFirstLetter(form)}, get${upperFirstLetter(form)}List, get${upperFirstLetter(form)}ById, update${upperFirstLetter(form)}, delete${upperFirstLetter(form)}};
  `;
 }
 
@@ -115,10 +114,10 @@ function getImportApi(form) {
 function getDefineRouter(form) {
   return `
 router.post('/api/${form}/add',checkArguments(['name']), ${upperFirstLetter(form)}Api.add${upperFirstLetter(form)});
-router.post('/api/${form}/get', ${upperFirstLetter(form)}Api.get${upperFirstLetter(form)}s);
-router.post('/api/${form}/update', checkArguments(['id', 'name']), ${upperFirstLetter(form)}Api.update${upperFirstLetter(form)}s);
+router.post('/api/${form}/get', ${upperFirstLetter(form)}Api.get${upperFirstLetter(form)}List);
+router.post('/api/${form}/update', checkArguments(['id', 'name']), ${upperFirstLetter(form)}Api.update${upperFirstLetter(form)});
 router.post('/api/${form}/delete',  checkArguments(['ids']), ${upperFirstLetter(form)}Api.delete${upperFirstLetter(form)}s);  
-router.post('/api/${form}/detail',  checkArguments(['id']), ${upperFirstLetter(form)}Api.get${upperFirstLetter(form)}Detail); \
+router.post('/api/${form}/detail',  checkArguments(['id']), ${upperFirstLetter(form)}Api.get${upperFirstLetter(form)}ById); \
 `
 }
 
@@ -364,9 +363,9 @@ const rl = readline.createInterface({
 
 rl.question('What\'s the form name ?', async form => {
 // generate code of backend
-  await writeFile(path.resolve(schemaPath, `${upperFirstLetter(form)}.js`), getModel(form));
+  await writeFile(path.resolve(schemaPath, `${upperFirstLetter(form)}Schema.js`), getModel(form));
   await writeFile(path.resolve(apiPath, `${upperFirstLetter(form)}Api.js`), getApi(form));
-  await writeFile(path.resolve(servicePath, `${upperFirstLetter(form)}Service.js`), getService(form));
+  await writeFile(path.resolve(servicePath, `js`), getService(form));
 
   await updateFile(routerPath, 'importApi', getImportApi(form));
   await updateFile(routerPath, 'defineRouter', getDefineRouter(form));

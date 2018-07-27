@@ -18,9 +18,11 @@ import stores from '~/stores';
 
 import HomePage from './pages/HomePage';
 import LoginPage from "~/pages/login/LoginPage";
+import TestPage from './pages/test/TestPage';
 //UPDATE_TAG:importPage
 
 const routes = [
+  {key: '/admin/test', component: TestPage},
 //UPDATE_TAG:addPageRoute
 ];
 
