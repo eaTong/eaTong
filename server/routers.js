@@ -1,4 +1,7 @@
 const Router = require('koa-router');
+const {checkArguments} = require('./framework/middleWare');
+const {ArgMissError, LogicError} = require('./framework/errors');
+
 const TodoApi = require('./apis/todoApi');
 const FormApi = require('./apis/formApi');
 const UserApi = require('./apis/userApi');
@@ -6,9 +9,7 @@ const FileApi = require('./apis/fileApi');
 const BlogApi = require('./apis/blogApi');
 const WeChatApi = require('./apis/weChatApi');
 const VisitLogApi = require('./apis/visitLogApi');
-const {checkArguments} = require('./framework/middleWare');
-const {ArgMissError, LogicError} = require('./framework/errors');
-
+//UPDATE_TAG:importApi
 
 const router = new Router();
 //define data structure for all API
@@ -71,6 +72,7 @@ router.post('/api/blog/list', BlogApi.getBlogList);
 router.post('/api/pub/published-blog', BlogApi.getPublishedBlog);
 router.post('/api/pub/blog/detail', BlogApi.getBlogById);
 router.post('/api/pub/blog/comment', checkArguments(['content', 'blog']), BlogApi.addComment);
+//UPDATE_TAG:defineRouter
 
 router.post('/api/visit-log/list', VisitLogApi.getVisitLogs);
 

@@ -3,7 +3,6 @@
  */
 const Form = require('../schema/FormSchema');
 const Comment = require('../schema/CommentSchema');
-const {grabContent, getKeywords} = require('../framework/util');
 
 async function writeForm(data) {
   const form = new Form(data);
