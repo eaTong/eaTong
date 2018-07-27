@@ -14,9 +14,10 @@ const apiPath = path.resolve(basePath, 'server', 'apis');
 const servicePath = path.resolve(basePath, 'server', 'services');
 const routerPath = path.resolve(basePath, 'server', 'routers.js');
 const initDbPath = path.resolve(basePath, 'bin', 'initDB.js');
-const storePath = path.resolve(basePath, 'front', 'stores');
-const storeIndexPath = path.resolve(basePath, 'front', 'stores', 'index.js');
-const appPath = path.resolve(basePath, 'front', 'App.js');
+const storePath = path.resolve(basePath, 'admin', 'stores');
+const storeIndexPath = path.resolve(basePath, 'admin', 'stores', 'index.js');
+const appPath = path.resolve(basePath, 'admin', 'App.js');
+const adminLayoutPath = path.resolve(basePath, 'admin', 'components', 'AdminLayout.js');
 
 const description = `
 /**
@@ -121,16 +122,9 @@ router.post('/api/${form}/detail',  checkArguments(['id']), ${upperFirstLetter(f
 `
 }
 
-function getImportModel(form) {
-  return `const ${upperFirstLetter(form)} = require('../server/models/${upperFirstLetter(form)}');`;
-}
-
-function getAsyncModel(form) {
-  return `  await ${upperFirstLetter(form)}.sync({alter: true});`;
-}
 
 function getFrontFormPath(form) {
-  let finalPath = path.resolve(basePath, 'front', 'pages');
+  let finalPath = path.resolve(basePath, 'admin', 'pages');
 
   if (module) {
     finalPath = path.resolve(finalPath);
@@ -320,6 +314,10 @@ function getAddPageRoute(form) {
   return `  {key: '/admin/${form}', component: ${upperFirstLetter(form)}Page},`;
 }
 
+function getAddMenu(form) {
+  return `  {icon: '', path: '/admin/${form}', name: '${form}'},`;
+}
+
 function upperFirstLetter(word) {
   return word.replace(/\w/, (a) => a.toUpperCase())
 }
@@ -382,6 +380,7 @@ rl.question('What\'s the form name ?', async form => {
   await updateFile(storeIndexPath, 'registerStore', getRegisterStore(form));
   await updateFile(appPath, 'importPage', getImportPage(form));
   await updateFile(appPath, 'addPageRoute', getAddPageRoute(form));
+  await updateFile(adminLayoutPath, 'addMenu', getAddMenu(form));
   rl.close();
 
   process.exit();

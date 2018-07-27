@@ -7,7 +7,7 @@ import ajax from '../util/ajaxUtil';
 
 const {Content, Sider} = Layout;
 const menus = [
-  {icon: '', path: '', name: ''}
+//UPDATE_TAG:addMenu
 ];
 
 class AdminLayout extends Component {
