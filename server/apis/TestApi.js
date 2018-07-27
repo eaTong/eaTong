@@ -5,7 +5,7 @@
  */
 
 const {LogicError} = require("../framework/errors");
-const {addTest , updateTest , deleteTests , getTestList , getTestById} = require('../services/TestService');
+const {addTest , updateTest , deleteTest , getTestList , getTestById} = require('../services/TestService');
 const BaseApi = require('../framework/BaseApi');
 
 
@@ -19,7 +19,7 @@ class TestApi extends BaseApi {
   }
 
   static async deleteTests(ctx) {
-    return await deleteTests(ctx.request.body.ids);
+    return await deleteTest(ctx.request.body.ids);
   }
 
   static async getTestList(ctx) {
@@ -34,4 +34,3 @@ class TestApi extends BaseApi {
 }
 
 module.exports = TestApi;
-  

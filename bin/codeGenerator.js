@@ -180,7 +180,7 @@ class ${upperFirstLetter(form)}Page extends Component {
         <AgTable
           columns={columns}
           dataSource={dataList}
-          rowKey="id"
+          rowKey="_id"
           tableId="${form}-table"
           pagination={this.props.${form}.pagination}
           rowSelection={{
