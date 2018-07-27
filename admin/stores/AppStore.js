@@ -11,12 +11,7 @@ export default class AppStore {
 
   @action
   async login(values) {
-    const {success, data} = await ajax({data: values, url: '/api/user/login'});
-    if (success) {
-      this.loginUser = data;
-      window.sessionStorage.setItem('loginUser',JSON.stringify(data));
-    }
-    return {success, data};
+    return await ajax({data: values, url: '/api/user/login'});
   }
 
   @action
@@ -33,9 +28,4 @@ export default class AppStore {
     this.ajaxCount = ajaxCount;
   }
 
-
-  @action
-  getCachedUser() {
-    this.loginUser = JSON.parse(window.sessionStorage.getItem('loginUser') || '{}');
-  }
 }

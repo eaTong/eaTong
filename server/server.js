@@ -99,7 +99,7 @@ nextApp.prepare().then(() => {
     }
   });
 
-  router.get('/admin/sundry' , async (ctx)=>{
+  router.get('/admin/console', async (ctx) => {
     ctx.type = 'html';
     ctx.body = createReadStream('dist/index.html');
   });

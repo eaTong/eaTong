@@ -17,6 +17,7 @@ import "ag-grid/dist/styles/ag-grid.css";
 import stores from '~/stores';
 
 import HomePage from './pages/HomePage';
+import LoginPage from "~/pages/login/LoginPage";
 //UPDATE_TAG:importPage
 
 const routes = [
@@ -35,7 +36,8 @@ class App extends React.Component {
         <Provider {...stores}>
           <Router>
             <div className="main-body">
-              <Route path={'/'} component={HomePage}/>
+              <Route exact path={'/'} component={HomePage}/>
+              <Route exact path="/login" component={LoginPage}/>
               <Route path="/admin" component={(props) => (
                 <AdminLayout {...props}>
                   {renderRoute()}

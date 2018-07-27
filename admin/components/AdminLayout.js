@@ -6,20 +6,16 @@ import {Layout, Menu, Icon, Tooltip} from 'antd'
 import ajax from '../util/ajaxUtil';
 
 const {Content, Sider} = Layout;
+const menus = [
+  {icon: '', path: '', name: ''}
+];
 
 class AdminLayout extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      menus: [],
-      loginUser: {}
+      menus: []
     };
-  }
-
-  async componentWillMount() {
-    this.state.loginUser = JSON.parse(window.sessionStorage.getItem('loginUser') || '{}');
-    const {success, data} = await ajax({url: '/api/menu/authorised'});
-    success && this.setState({menus: data});
   }
 
   onSelectMenu({key}) {
@@ -42,7 +38,6 @@ class AdminLayout extends Component {
   }
 
   render() {
-    const {loginUser} = this.state;
     return (
       <Layout className="layout">
         <Sider breakpoint="lg">
@@ -54,8 +49,6 @@ class AdminLayout extends Component {
             {this.renderMenus()}
           </Menu>
           <div className='personal-info'>
-            <span className="welcome">欢迎您：</span>
-            <span className="name">{loginUser.name}</span>
             <Tooltip title='退出'>
               <Icon type="poweroff" onClick={() => this.logout()}/>
             </Tooltip>
