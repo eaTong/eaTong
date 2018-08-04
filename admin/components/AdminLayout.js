@@ -8,6 +8,7 @@ import ajax from '../util/ajaxUtil';
 const {Content, Sider} = Layout;
 const menus = [
   {icon: '', path: '/admin/test', name: 'test'},
+  {icon: '', path: '/admin/password', name: 'password'},
 //UPDATE_TAG:addMenu
 ];
 

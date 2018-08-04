@@ -4,10 +4,12 @@
  */
 import AppStore from './AppStore';
 import TestStore from './TestStore';
+import PasswordStore from './PasswordStore';
 //UPDATE_TAG:importStore
 
 export default {
   app: new AppStore(),
 test: new TestStore(),
+password: new PasswordStore(),
 //UPDATE_TAG:registerStore
 }

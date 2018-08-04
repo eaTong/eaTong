@@ -365,7 +365,7 @@ rl.question('What\'s the form name ?', async form => {
 // generate code of backend
   await writeFile(path.resolve(schemaPath, `${upperFirstLetter(form)}Schema.js`), getModel(form));
   await writeFile(path.resolve(apiPath, `${upperFirstLetter(form)}Api.js`), getApi(form));
-  await writeFile(path.resolve(servicePath, `js`), getService(form));
+  await writeFile(path.resolve(servicePath, `${upperFirstLetter(form)}Service.js`), getService(form));
 
   await updateFile(routerPath, 'importApi', getImportApi(form));
   await updateFile(routerPath, 'defineRouter', getDefineRouter(form));

@@ -10,6 +10,7 @@ const BlogApi = require('./apis/blogApi');
 const WeChatApi = require('./apis/weChatApi');
 const VisitLogApi = require('./apis/visitLogApi');
 const TestApi = require('./apis/TestApi');
+const PasswordApi = require('./apis/PasswordApi');
 //UPDATE_TAG:importApi
 
 const router = new Router();
@@ -79,6 +80,12 @@ router.post('/api/test/get', TestApi.getTestList);
 router.post('/api/test/update', checkArguments(['id', 'name']), TestApi.updateTest);
 router.post('/api/test/delete',  checkArguments(['ids']), TestApi.deleteTests);  
 router.post('/api/test/detail',  checkArguments(['id']), TestApi.getTestById); 
+
+router.post('/api/password/add',checkArguments(['name']), PasswordApi.addPassword);
+router.post('/api/password/get', PasswordApi.getPasswordList);
+router.post('/api/password/update', checkArguments(['id', 'name']), PasswordApi.updatePassword);
+router.post('/api/password/delete',  checkArguments(['ids']), PasswordApi.deletePasswords);  
+router.post('/api/password/detail',  checkArguments(['id']), PasswordApi.getPasswordById); 
 //UPDATE_TAG:defineRouter
 
 router.post('/api/visit-log/list', VisitLogApi.getVisitLogs);

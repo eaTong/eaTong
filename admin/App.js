@@ -19,10 +19,12 @@ import stores from '~/stores';
 import HomePage from './pages/HomePage';
 import LoginPage from "~/pages/login/LoginPage";
 import TestPage from './pages/test/TestPage';
+import PasswordPage from './pages/password/PasswordPage';
 //UPDATE_TAG:importPage
 
 const routes = [
   {key: '/admin/test', component: TestPage},
+  {key: '/admin/password', component: PasswordPage},
 //UPDATE_TAG:addPageRoute
 ];
 
