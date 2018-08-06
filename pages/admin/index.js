@@ -31,6 +31,7 @@ class Admin extends Component {
             </li>
             <li><Link href="/admin/blog/write"><a className="has-text-link">write a blog</a></Link></li>
             <li><Link href="/admin/analyse/visitLog"><a className="has-text-link">visit log</a></Link></li>
+            <li><a href="/admin/console#/admin">admin-console</a></li>
           </ul>
         </aside>
       </div>

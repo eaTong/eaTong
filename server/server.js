@@ -101,7 +101,7 @@ nextApp.prepare().then(() => {
 
   router.get('/admin/console', async (ctx) => {
     ctx.type = 'html';
-    ctx.body = createReadStream('dist/index.html');
+    ctx.body = createReadStream('dist/console.html');
   });
 
   const handler = routes.getRequestHandler(nextApp);

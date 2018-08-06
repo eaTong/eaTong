@@ -2,6 +2,8 @@
   "scripts": {
     "start-front": "cross-env NODE_ENV=development node  devServer",
     "start-server": "cross-env NODE_ENV=development node index.js",
+    "build-next": "next build ",
+    "build-console": "cross-env NODE_ENV=production webpack --progress  --config webpack.config.prod.js",
     "build": "next build && cross-env NODE_ENV=production webpack --progress  --config webpack.config.prod.js",
     "start": "NODE_ENV=production node index"
   },

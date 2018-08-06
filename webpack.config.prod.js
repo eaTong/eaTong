@@ -53,7 +53,7 @@ module.exports = {
       template: path.join(__dirname, 'index-production.html'),
       path: buildPath,
       excludeChunks: ['base'],
-      filename: 'index.html',
+      filename: 'console.html',
       time: Date.now(),
       minify: {
         collapseWhitespace: true,
